@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{231A1303-3630-428D-BD95-4C21A3D105BD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UI</RootNamespace>
+    <AssemblyName>Grocery4JIA</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddGoods2CustForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddGoods2CustForm.Designer.cs">
+      <DependentUpon>AddGoods2CustForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CatgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CatgForm.Designer.cs">
+      <DependentUpon>CatgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerForm.Designer.cs">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsForm.Designer.cs">
+      <DependentUpon>GoodsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GoodsInStockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GoodsInStockForm.Designer.cs">
+      <DependentUpon>GoodsInStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MCustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MCustomersForm.Designer.cs">
+      <DependentUpon>MCustomersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MGoodsForm.Designer.cs">
+      <DependentUpon>MGoodsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MSinRefundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MSinRefundForm.Designer.cs">
+      <DependentUpon>MSinRefundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MStockinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MStockinForm.Designer.cs">
+      <DependentUpon>MStockinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MStockOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MStockOutForm.Designer.cs">
+      <DependentUpon>MStockOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderCnfrmDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderCnfrmDialog.Designer.cs">
+      <DependentUpon>OrderCnfrmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefundOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RefundOrderDetailForm.Designer.cs">
+      <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SinRefundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SinRefundForm.Designer.cs">
+      <DependentUpon>SinRefundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockinForm.Designer.cs">
+      <DependentUpon>StockinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockinOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockinOrderDetailForm.Designer.cs">
+      <DependentUpon>StockinOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubCatgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubCatgForm.Designer.cs">
+      <DependentUpon>SubCatgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MSupplyInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MSupplyInfoForm.Designer.cs">
+      <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddGoods2CustForm.resx">
+      <DependentUpon>AddGoods2CustForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CatgForm.resx">
+      <DependentUpon>CatgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerForm.resx">
+      <DependentUpon>CustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsForm.resx">
+      <DependentUpon>GoodsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GoodsInStockForm.resx">
+      <DependentUpon>GoodsInStockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MCustomersForm.resx">
+      <DependentUpon>MCustomersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGoodsForm.resx">
+      <DependentUpon>MGoodsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MSinRefundForm.resx">
+      <DependentUpon>MSinRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MStockinForm.resx">
+      <DependentUpon>MStockinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MStockOutForm.resx">
+      <DependentUpon>MStockOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderCnfrmDialog.resx">
+      <DependentUpon>OrderCnfrmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RefundOrderDetailForm.resx">
+      <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SinRefundForm.resx">
+      <DependentUpon>SinRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockinForm.resx">
+      <DependentUpon>StockinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockinOrderDetailForm.resx">
+      <DependentUpon>StockinOrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubCatgForm.resx">
+      <DependentUpon>SubCatgForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MSupplyInfoForm.resx">
+      <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{f9f1edbe-d3a9-4b0b-ae51-79289bd3086d}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{aece1ece-279b-4f59-8ac0-8fd582ba483f}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\jia.logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jia.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
