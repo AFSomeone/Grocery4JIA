@@ -59,10 +59,12 @@
     <Compile Include="VO\GoodsVO.cs" />
     <Compile Include="VO\InStockGoodsVO.cs" />
     <Compile Include="VO\OrderGoodsVO.cs" />
+    <Compile Include="VO\OrderVO.cs" />
     <Compile Include="VO\RefundOrderDetailVO.cs" />
     <Compile Include="VO\RefundOrderVO.cs" />
-    <Compile Include="VO\StockinOrderDetailVO.cs" />
-    <Compile Include="VO\StockinOrderVO.cs" />
+    <Compile Include="VO\StockInOrderDetailVO.cs" />
+    <Compile Include="VO\StockInOrderVO.cs" />
+    <Compile Include="VO\StockOutOrderDetailVO.cs" />
     <Compile Include="VO\StockOutOrderVO.cs" />
     <Compile Include="VO\SubCatgVO.cs" />
   </ItemGroup>

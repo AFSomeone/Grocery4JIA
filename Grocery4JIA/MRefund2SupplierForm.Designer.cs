@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class MStockOutForm
+    partial class MRefund2SupplierForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabSOutOrders = new System.Windows.Forms.TabControl();
+            this.tabRefundOrders = new System.Windows.Forms.TabControl();
             this.tabPCreatOrder = new System.Windows.Forms.TabPage();
             this.btnBtchAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lboxGoods = new System.Windows.Forms.ListBox();
             this.txtGoodsInStock = new System.Windows.Forms.TextBox();
             this.lblGoods = new System.Windows.Forms.Label();
-            this.cboxNResellers = new System.Windows.Forms.ComboBox();
-            this.lblReseller = new System.Windows.Forms.Label();
+            this.cboxNSupplier = new System.Windows.Forms.ComboBox();
+            this.lblSupplier = new System.Windows.Forms.Label();
             this.btnAdd2List = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.dtgvSOutGoods = new System.Windows.Forms.DataGridView();
+            this.btnRefund = new System.Windows.Forms.Button();
+            this.dtgvRfGoods = new System.Windows.Forms.DataGridView();
             this.colSInOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,43 +51,43 @@
             this.colInvNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPSOutOrders = new System.Windows.Forms.TabPage();
-            this.lblQyDt = new System.Windows.Forms.Label();
-            this.ckboxQyEnableEndDt = new System.Windows.Forms.CheckBox();
-            this.dtpQyEndDt = new System.Windows.Forms.DateTimePicker();
-            this.btnOrderQuery = new System.Windows.Forms.Button();
-            this.txtQyOrderNO = new System.Windows.Forms.TextBox();
-            this.lblQyOrderNO = new System.Windows.Forms.Label();
+            this.tabPQyOrders = new System.Windows.Forms.TabPage();
+            this.cboxQySupplier = new System.Windows.Forms.ComboBox();
+            this.lblQSupplier = new System.Windows.Forms.Label();
             this.ckboxQyEnableStDt = new System.Windows.Forms.CheckBox();
+            this.btnOrderQuery = new System.Windows.Forms.Button();
             this.dtpQyStDt = new System.Windows.Forms.DateTimePicker();
-            this.lblQyCrtTm = new System.Windows.Forms.Label();
-            this.cboxQyReseller = new System.Windows.Forms.ComboBox();
-            this.lblQyReseller = new System.Windows.Forms.Label();
-            this.dtgvMOutOrders = new System.Windows.Forms.DataGridView();
+            this.lblCrtTm = new System.Windows.Forms.Label();
+            this.txtQyOrderNO = new System.Windows.Forms.TextBox();
+            this.lblOrderNO = new System.Windows.Forms.Label();
+            this.dtgvRfOrders = new System.Windows.Forms.DataGridView();
             this.colOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReseller = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQySupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCrtTmst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCrtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUptTmst = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUptName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabSOutOrders.SuspendLayout();
+            this.lblQyDt = new System.Windows.Forms.Label();
+            this.ckboxQyEnableEndDt = new System.Windows.Forms.CheckBox();
+            this.dtpQyEndDt = new System.Windows.Forms.DateTimePicker();
+            this.tabRefundOrders.SuspendLayout();
             this.tabPCreatOrder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSOutGoods)).BeginInit();
-            this.tabPSOutOrders.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvMOutOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRfGoods)).BeginInit();
+            this.tabPQyOrders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRfOrders)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabSOutOrders
+            // tabRefundOrders
             // 
-            this.tabSOutOrders.Controls.Add(this.tabPCreatOrder);
-            this.tabSOutOrders.Controls.Add(this.tabPSOutOrders);
-            this.tabSOutOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabSOutOrders.Location = new System.Drawing.Point(0, 0);
-            this.tabSOutOrders.Name = "tabSOutOrders";
-            this.tabSOutOrders.SelectedIndex = 0;
-            this.tabSOutOrders.Size = new System.Drawing.Size(1447, 722);
-            this.tabSOutOrders.TabIndex = 0;
+            this.tabRefundOrders.Controls.Add(this.tabPCreatOrder);
+            this.tabRefundOrders.Controls.Add(this.tabPQyOrders);
+            this.tabRefundOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabRefundOrders.Location = new System.Drawing.Point(0, 0);
+            this.tabRefundOrders.Name = "tabRefundOrders";
+            this.tabRefundOrders.SelectedIndex = 0;
+            this.tabRefundOrders.Size = new System.Drawing.Size(1325, 720);
+            this.tabRefundOrders.TabIndex = 1;
             // 
             // tabPCreatOrder
             // 
@@ -96,32 +96,32 @@
             this.tabPCreatOrder.Controls.Add(this.lboxGoods);
             this.tabPCreatOrder.Controls.Add(this.txtGoodsInStock);
             this.tabPCreatOrder.Controls.Add(this.lblGoods);
-            this.tabPCreatOrder.Controls.Add(this.cboxNResellers);
-            this.tabPCreatOrder.Controls.Add(this.lblReseller);
+            this.tabPCreatOrder.Controls.Add(this.cboxNSupplier);
+            this.tabPCreatOrder.Controls.Add(this.lblSupplier);
             this.tabPCreatOrder.Controls.Add(this.btnAdd2List);
-            this.tabPCreatOrder.Controls.Add(this.btnCreate);
-            this.tabPCreatOrder.Controls.Add(this.dtgvSOutGoods);
+            this.tabPCreatOrder.Controls.Add(this.btnRefund);
+            this.tabPCreatOrder.Controls.Add(this.dtgvRfGoods);
             this.tabPCreatOrder.Location = new System.Drawing.Point(4, 25);
             this.tabPCreatOrder.Name = "tabPCreatOrder";
             this.tabPCreatOrder.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPCreatOrder.Size = new System.Drawing.Size(1439, 693);
+            this.tabPCreatOrder.Size = new System.Drawing.Size(1317, 691);
             this.tabPCreatOrder.TabIndex = 0;
-            this.tabPCreatOrder.Text = "创建出货单";
+            this.tabPCreatOrder.Text = "创建退货单";
             this.tabPCreatOrder.UseVisualStyleBackColor = true;
             // 
             // btnBtchAdd
             // 
-            this.btnBtchAdd.Location = new System.Drawing.Point(997, 14);
+            this.btnBtchAdd.Location = new System.Drawing.Point(1051, 14);
             this.btnBtchAdd.Name = "btnBtchAdd";
             this.btnBtchAdd.Size = new System.Drawing.Size(85, 30);
             this.btnBtchAdd.TabIndex = 6;
-            this.btnBtchAdd.Text = "批量添加";
+            this.btnBtchAdd.Text = "批量选择";
             this.btnBtchAdd.UseVisualStyleBackColor = true;
             this.btnBtchAdd.Click += new System.EventHandler(this.btnBtchAdd_Click);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(875, 14);
+            this.btnDelete.Location = new System.Drawing.Point(929, 14);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(85, 30);
             this.btnDelete.TabIndex = 5;
@@ -133,7 +133,7 @@
             // 
             this.lboxGoods.FormattingEnabled = true;
             this.lboxGoods.ItemHeight = 15;
-            this.lboxGoods.Location = new System.Drawing.Point(417, 44);
+            this.lboxGoods.Location = new System.Drawing.Point(460, 42);
             this.lboxGoods.Name = "lboxGoods";
             this.lboxGoods.Size = new System.Drawing.Size(300, 139);
             this.lboxGoods.TabIndex = 3;
@@ -143,7 +143,7 @@
             // 
             // txtGoodsInStock
             // 
-            this.txtGoodsInStock.Location = new System.Drawing.Point(417, 19);
+            this.txtGoodsInStock.Location = new System.Drawing.Point(460, 17);
             this.txtGoodsInStock.Name = "txtGoodsInStock";
             this.txtGoodsInStock.Size = new System.Drawing.Size(300, 25);
             this.txtGoodsInStock.TabIndex = 2;
@@ -152,32 +152,32 @@
             // lblGoods
             // 
             this.lblGoods.AutoSize = true;
-            this.lblGoods.Location = new System.Drawing.Point(305, 23);
+            this.lblGoods.Location = new System.Drawing.Point(348, 22);
             this.lblGoods.Name = "lblGoods";
             this.lblGoods.Size = new System.Drawing.Size(106, 15);
             this.lblGoods.TabIndex = 0;
             this.lblGoods.Text = "商品ID/名称：";
             // 
-            // cboxNResellers
+            // cboxNSupplier
             // 
-            this.cboxNResellers.FormattingEnabled = true;
-            this.cboxNResellers.Location = new System.Drawing.Point(76, 19);
-            this.cboxNResellers.Name = "cboxNResellers";
-            this.cboxNResellers.Size = new System.Drawing.Size(200, 23);
-            this.cboxNResellers.TabIndex = 1;
+            this.cboxNSupplier.FormattingEnabled = true;
+            this.cboxNSupplier.Location = new System.Drawing.Point(76, 18);
+            this.cboxNSupplier.Name = "cboxNSupplier";
+            this.cboxNSupplier.Size = new System.Drawing.Size(250, 23);
+            this.cboxNSupplier.TabIndex = 1;
             // 
-            // lblReseller
+            // lblSupplier
             // 
-            this.lblReseller.AutoSize = true;
-            this.lblReseller.Location = new System.Drawing.Point(3, 23);
-            this.lblReseller.Name = "lblReseller";
-            this.lblReseller.Size = new System.Drawing.Size(67, 15);
-            this.lblReseller.TabIndex = 0;
-            this.lblReseller.Text = "零售商：";
+            this.lblSupplier.AutoSize = true;
+            this.lblSupplier.Location = new System.Drawing.Point(3, 22);
+            this.lblSupplier.Name = "lblSupplier";
+            this.lblSupplier.Size = new System.Drawing.Size(67, 15);
+            this.lblSupplier.TabIndex = 0;
+            this.lblSupplier.Text = "供应商：";
             // 
             // btnAdd2List
             // 
-            this.btnAdd2List.Location = new System.Drawing.Point(755, 14);
+            this.btnAdd2List.Location = new System.Drawing.Point(809, 14);
             this.btnAdd2List.Name = "btnAdd2List";
             this.btnAdd2List.Size = new System.Drawing.Size(85, 30);
             this.btnAdd2List.TabIndex = 4;
@@ -185,25 +185,25 @@
             this.btnAdd2List.UseVisualStyleBackColor = true;
             this.btnAdd2List.Click += new System.EventHandler(this.btnAdd2List_Click);
             // 
-            // btnCreate
+            // btnRefund
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1117, 14);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(85, 30);
-            this.btnCreate.TabIndex = 7;
-            this.btnCreate.Text = "出货";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.btnRefund.Location = new System.Drawing.Point(1171, 14);
+            this.btnRefund.Name = "btnRefund";
+            this.btnRefund.Size = new System.Drawing.Size(85, 30);
+            this.btnRefund.TabIndex = 7;
+            this.btnRefund.Text = "退货";
+            this.btnRefund.UseVisualStyleBackColor = true;
+            this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
             // 
-            // dtgvSOutGoods
+            // dtgvRfGoods
             // 
-            this.dtgvSOutGoods.AllowUserToAddRows = false;
-            this.dtgvSOutGoods.AllowUserToDeleteRows = false;
-            this.dtgvSOutGoods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtgvRfGoods.AllowUserToAddRows = false;
+            this.dtgvRfGoods.AllowUserToDeleteRows = false;
+            this.dtgvRfGoods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgvSOutGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvSOutGoods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvRfGoods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvRfGoods.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSInOrderNO,
             this.colGID,
             this.colGName,
@@ -215,13 +215,13 @@
             this.colInvNum,
             this.colNum,
             this.colInvID});
-            this.dtgvSOutGoods.Location = new System.Drawing.Point(0, 61);
-            this.dtgvSOutGoods.Name = "dtgvSOutGoods";
-            this.dtgvSOutGoods.RowTemplate.Height = 27;
-            this.dtgvSOutGoods.Size = new System.Drawing.Size(1439, 629);
-            this.dtgvSOutGoods.TabIndex = 8;
-            this.dtgvSOutGoods.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvSOutGoods_CellEndEdit);
-            this.dtgvSOutGoods.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgvSOutGoods_EditingControlShowing);
+            this.dtgvRfGoods.Location = new System.Drawing.Point(0, 61);
+            this.dtgvRfGoods.Name = "dtgvRfGoods";
+            this.dtgvRfGoods.RowTemplate.Height = 27;
+            this.dtgvRfGoods.Size = new System.Drawing.Size(1317, 634);
+            this.dtgvRfGoods.TabIndex = 8;
+            this.dtgvRfGoods.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRfGoods_CellEndEdit);
+            this.dtgvRfGoods.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dtgvRfGoods_EditingControlShowing);
             // 
             // colSInOrderNO
             // 
@@ -275,7 +275,7 @@
             // colPrice
             // 
             this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colPrice.HeaderText = "售价/元";
+            this.colPrice.HeaderText = "退货价/元";
             this.colPrice.Name = "colPrice";
             // 
             // colInvNum
@@ -290,7 +290,7 @@
             // 
             this.colNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colNum.FillWeight = 80F;
-            this.colNum.HeaderText = "出货量";
+            this.colNum.HeaderText = "退货量";
             this.colNum.Name = "colNum";
             // 
             // colInvID
@@ -300,172 +300,143 @@
             this.colInvID.ReadOnly = true;
             this.colInvID.Visible = false;
             // 
-            // tabPSOutOrders
+            // tabPQyOrders
             // 
-            this.tabPSOutOrders.Controls.Add(this.lblQyDt);
-            this.tabPSOutOrders.Controls.Add(this.ckboxQyEnableEndDt);
-            this.tabPSOutOrders.Controls.Add(this.dtpQyEndDt);
-            this.tabPSOutOrders.Controls.Add(this.btnOrderQuery);
-            this.tabPSOutOrders.Controls.Add(this.txtQyOrderNO);
-            this.tabPSOutOrders.Controls.Add(this.lblQyOrderNO);
-            this.tabPSOutOrders.Controls.Add(this.ckboxQyEnableStDt);
-            this.tabPSOutOrders.Controls.Add(this.dtpQyStDt);
-            this.tabPSOutOrders.Controls.Add(this.lblQyCrtTm);
-            this.tabPSOutOrders.Controls.Add(this.cboxQyReseller);
-            this.tabPSOutOrders.Controls.Add(this.lblQyReseller);
-            this.tabPSOutOrders.Controls.Add(this.dtgvMOutOrders);
-            this.tabPSOutOrders.Location = new System.Drawing.Point(4, 25);
-            this.tabPSOutOrders.Name = "tabPSOutOrders";
-            this.tabPSOutOrders.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPSOutOrders.Size = new System.Drawing.Size(1439, 693);
-            this.tabPSOutOrders.TabIndex = 1;
-            this.tabPSOutOrders.Text = "出货单查询";
-            this.tabPSOutOrders.UseVisualStyleBackColor = true;
+            this.tabPQyOrders.Controls.Add(this.lblQyDt);
+            this.tabPQyOrders.Controls.Add(this.ckboxQyEnableEndDt);
+            this.tabPQyOrders.Controls.Add(this.dtpQyEndDt);
+            this.tabPQyOrders.Controls.Add(this.cboxQySupplier);
+            this.tabPQyOrders.Controls.Add(this.lblQSupplier);
+            this.tabPQyOrders.Controls.Add(this.ckboxQyEnableStDt);
+            this.tabPQyOrders.Controls.Add(this.btnOrderQuery);
+            this.tabPQyOrders.Controls.Add(this.dtpQyStDt);
+            this.tabPQyOrders.Controls.Add(this.lblCrtTm);
+            this.tabPQyOrders.Controls.Add(this.txtQyOrderNO);
+            this.tabPQyOrders.Controls.Add(this.lblOrderNO);
+            this.tabPQyOrders.Controls.Add(this.dtgvRfOrders);
+            this.tabPQyOrders.Location = new System.Drawing.Point(4, 25);
+            this.tabPQyOrders.Name = "tabPQyOrders";
+            this.tabPQyOrders.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPQyOrders.Size = new System.Drawing.Size(1317, 691);
+            this.tabPQyOrders.TabIndex = 1;
+            this.tabPQyOrders.Text = "退货单查询";
+            this.tabPQyOrders.UseVisualStyleBackColor = true;
             // 
-            // lblQyDt
+            // cboxQySupplier
             // 
-            this.lblQyDt.AutoSize = true;
-            this.lblQyDt.Location = new System.Drawing.Point(900, 24);
-            this.lblQyDt.Name = "lblQyDt";
-            this.lblQyDt.Size = new System.Drawing.Size(22, 15);
-            this.lblQyDt.TabIndex = 16;
-            this.lblQyDt.Text = "—";
+            this.cboxQySupplier.FormattingEnabled = true;
+            this.cboxQySupplier.Location = new System.Drawing.Point(78, 16);
+            this.cboxQySupplier.Name = "cboxQySupplier";
+            this.cboxQySupplier.Size = new System.Drawing.Size(250, 23);
+            this.cboxQySupplier.TabIndex = 12;
             // 
-            // ckboxQyEnableEndDt
+            // lblQSupplier
             // 
-            this.ckboxQyEnableEndDt.AutoSize = true;
-            this.ckboxQyEnableEndDt.Location = new System.Drawing.Point(1092, 22);
-            this.ckboxQyEnableEndDt.Name = "ckboxQyEnableEndDt";
-            this.ckboxQyEnableEndDt.Size = new System.Drawing.Size(18, 17);
-            this.ckboxQyEnableEndDt.TabIndex = 15;
-            this.ckboxQyEnableEndDt.UseVisualStyleBackColor = true;
-            this.ckboxQyEnableEndDt.Click += new System.EventHandler(this.ckboxEnableEndDt_Click);
-            // 
-            // dtpQyEndDt
-            // 
-            this.dtpQyEndDt.CustomFormat = "yyyy-MM-dd";
-            this.dtpQyEndDt.Enabled = false;
-            this.dtpQyEndDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpQyEndDt.Location = new System.Drawing.Point(936, 18);
-            this.dtpQyEndDt.Name = "dtpQyEndDt";
-            this.dtpQyEndDt.Size = new System.Drawing.Size(150, 25);
-            this.dtpQyEndDt.TabIndex = 14;
-            // 
-            // btnOrderQuery
-            // 
-            this.btnOrderQuery.Location = new System.Drawing.Point(1164, 15);
-            this.btnOrderQuery.Name = "btnOrderQuery";
-            this.btnOrderQuery.Size = new System.Drawing.Size(85, 30);
-            this.btnOrderQuery.TabIndex = 13;
-            this.btnOrderQuery.Text = "查询";
-            this.btnOrderQuery.UseVisualStyleBackColor = true;
-            this.btnOrderQuery.Click += new System.EventHandler(this.btnOrderQuery_Click);
-            // 
-            // txtQyOrderNO
-            // 
-            this.txtQyOrderNO.Location = new System.Drawing.Point(415, 18);
-            this.txtQyOrderNO.Name = "txtQyOrderNO";
-            this.txtQyOrderNO.Size = new System.Drawing.Size(180, 25);
-            this.txtQyOrderNO.TabIndex = 10;
-            // 
-            // lblQyOrderNO
-            // 
-            this.lblQyOrderNO.AutoSize = true;
-            this.lblQyOrderNO.Location = new System.Drawing.Point(357, 23);
-            this.lblQyOrderNO.Name = "lblQyOrderNO";
-            this.lblQyOrderNO.Size = new System.Drawing.Size(52, 15);
-            this.lblQyOrderNO.TabIndex = 8;
-            this.lblQyOrderNO.Text = "单号：";
+            this.lblQSupplier.AutoSize = true;
+            this.lblQSupplier.Location = new System.Drawing.Point(6, 20);
+            this.lblQSupplier.Name = "lblQSupplier";
+            this.lblQSupplier.Size = new System.Drawing.Size(67, 15);
+            this.lblQSupplier.TabIndex = 8;
+            this.lblQSupplier.Text = "供应商：";
             // 
             // ckboxQyEnableStDt
             // 
             this.ckboxQyEnableStDt.AutoSize = true;
-            this.ckboxQyEnableStDt.Location = new System.Drawing.Point(871, 22);
+            this.ckboxQyEnableStDt.Location = new System.Drawing.Point(873, 19);
             this.ckboxQyEnableStDt.Name = "ckboxQyEnableStDt";
             this.ckboxQyEnableStDt.Size = new System.Drawing.Size(18, 17);
-            this.ckboxQyEnableStDt.TabIndex = 12;
+            this.ckboxQyEnableStDt.TabIndex = 15;
             this.ckboxQyEnableStDt.UseVisualStyleBackColor = true;
             this.ckboxQyEnableStDt.Click += new System.EventHandler(this.ckboxQyEnableStDt_Click);
+            // 
+            // btnOrderQuery
+            // 
+            this.btnOrderQuery.Location = new System.Drawing.Point(1164, 12);
+            this.btnOrderQuery.Name = "btnOrderQuery";
+            this.btnOrderQuery.Size = new System.Drawing.Size(85, 30);
+            this.btnOrderQuery.TabIndex = 16;
+            this.btnOrderQuery.Text = "查询";
+            this.btnOrderQuery.UseVisualStyleBackColor = true;
+            this.btnOrderQuery.Click += new System.EventHandler(this.btnOrderQuery_Click);
             // 
             // dtpQyStDt
             // 
             this.dtpQyStDt.CustomFormat = "yyyy-MM-dd";
             this.dtpQyStDt.Enabled = false;
             this.dtpQyStDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpQyStDt.Location = new System.Drawing.Point(715, 18);
+            this.dtpQyStDt.Location = new System.Drawing.Point(718, 15);
             this.dtpQyStDt.Name = "dtpQyStDt";
             this.dtpQyStDt.Size = new System.Drawing.Size(150, 25);
-            this.dtpQyStDt.TabIndex = 11;
+            this.dtpQyStDt.TabIndex = 14;
             // 
-            // lblQyCrtTm
+            // lblCrtTm
             // 
-            this.lblQyCrtTm.AutoSize = true;
-            this.lblQyCrtTm.Location = new System.Drawing.Point(627, 23);
-            this.lblQyCrtTm.Name = "lblQyCrtTm";
-            this.lblQyCrtTm.Size = new System.Drawing.Size(82, 15);
-            this.lblQyCrtTm.TabIndex = 9;
-            this.lblQyCrtTm.Text = "创建日期：";
+            this.lblCrtTm.AutoSize = true;
+            this.lblCrtTm.Location = new System.Drawing.Point(630, 20);
+            this.lblCrtTm.Name = "lblCrtTm";
+            this.lblCrtTm.Size = new System.Drawing.Size(82, 15);
+            this.lblCrtTm.TabIndex = 9;
+            this.lblCrtTm.Text = "创建日期：";
             // 
-            // cboxQyReseller
+            // txtQyOrderNO
             // 
-            this.cboxQyReseller.FormattingEnabled = true;
-            this.cboxQyReseller.Location = new System.Drawing.Point(77, 19);
-            this.cboxQyReseller.Name = "cboxQyReseller";
-            this.cboxQyReseller.Size = new System.Drawing.Size(250, 23);
-            this.cboxQyReseller.TabIndex = 7;
+            this.txtQyOrderNO.Location = new System.Drawing.Point(412, 15);
+            this.txtQyOrderNO.Name = "txtQyOrderNO";
+            this.txtQyOrderNO.Size = new System.Drawing.Size(180, 25);
+            this.txtQyOrderNO.TabIndex = 13;
             // 
-            // lblQyReseller
+            // lblOrderNO
             // 
-            this.lblQyReseller.AutoSize = true;
-            this.lblQyReseller.Location = new System.Drawing.Point(4, 23);
-            this.lblQyReseller.Name = "lblQyReseller";
-            this.lblQyReseller.Size = new System.Drawing.Size(67, 15);
-            this.lblQyReseller.TabIndex = 6;
-            this.lblQyReseller.Text = "零售商：";
+            this.lblOrderNO.AutoSize = true;
+            this.lblOrderNO.Location = new System.Drawing.Point(355, 20);
+            this.lblOrderNO.Name = "lblOrderNO";
+            this.lblOrderNO.Size = new System.Drawing.Size(52, 15);
+            this.lblOrderNO.TabIndex = 10;
+            this.lblOrderNO.Text = "单号：";
             // 
-            // dtgvMOutOrders
+            // dtgvRfOrders
             // 
-            this.dtgvMOutOrders.AllowUserToAddRows = false;
-            this.dtgvMOutOrders.AllowUserToDeleteRows = false;
-            this.dtgvMOutOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtgvRfOrders.AllowUserToAddRows = false;
+            this.dtgvRfOrders.AllowUserToDeleteRows = false;
+            this.dtgvRfOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgvMOutOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvMOutOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvRfOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvRfOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colOrderNO,
-            this.colReseller,
+            this.colQySupplier,
             this.colAmount,
             this.colCrtTmst,
             this.colCrtName,
             this.colUptTmst,
             this.colUptName});
-            this.dtgvMOutOrders.Location = new System.Drawing.Point(0, 61);
-            this.dtgvMOutOrders.Margin = new System.Windows.Forms.Padding(1);
-            this.dtgvMOutOrders.Name = "dtgvMOutOrders";
-            this.dtgvMOutOrders.ReadOnly = true;
-            this.dtgvMOutOrders.RowTemplate.Height = 27;
-            this.dtgvMOutOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvMOutOrders.Size = new System.Drawing.Size(1439, 631);
-            this.dtgvMOutOrders.TabIndex = 1;
-            this.dtgvMOutOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvMOutOrders_CellDoubleClick);
+            this.dtgvRfOrders.Location = new System.Drawing.Point(2, 56);
+            this.dtgvRfOrders.Margin = new System.Windows.Forms.Padding(1);
+            this.dtgvRfOrders.Name = "dtgvRfOrders";
+            this.dtgvRfOrders.ReadOnly = true;
+            this.dtgvRfOrders.RowTemplate.Height = 27;
+            this.dtgvRfOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvRfOrders.Size = new System.Drawing.Size(1314, 635);
+            this.dtgvRfOrders.TabIndex = 11;
+            this.dtgvRfOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRfOrders_CellDoubleClick);
             // 
             // colOrderNO
             // 
             this.colOrderNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colOrderNO.DataPropertyName = "OrderNO";
-            this.colOrderNO.FillWeight = 120F;
+            this.colOrderNO.FillWeight = 150F;
             this.colOrderNO.HeaderText = "单号";
             this.colOrderNO.Name = "colOrderNO";
             this.colOrderNO.ReadOnly = true;
             // 
-            // colReseller
+            // colQySupplier
             // 
-            this.colReseller.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colReseller.DataPropertyName = "CustName";
-            this.colReseller.FillWeight = 200F;
-            this.colReseller.HeaderText = "零售商";
-            this.colReseller.Name = "colReseller";
-            this.colReseller.ReadOnly = true;
+            this.colQySupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colQySupplier.DataPropertyName = "CustName";
+            this.colQySupplier.FillWeight = 200F;
+            this.colQySupplier.HeaderText = "供应商";
+            this.colQySupplier.Name = "colQySupplier";
+            this.colQySupplier.ReadOnly = true;
             // 
             // colAmount
             // 
@@ -507,53 +478,72 @@
             this.colUptName.Name = "colUptName";
             this.colUptName.ReadOnly = true;
             // 
-            // MStockOutForm
+            // lblQyDt
+            // 
+            this.lblQyDt.AutoSize = true;
+            this.lblQyDt.Location = new System.Drawing.Point(902, 20);
+            this.lblQyDt.Name = "lblQyDt";
+            this.lblQyDt.Size = new System.Drawing.Size(22, 15);
+            this.lblQyDt.TabIndex = 19;
+            this.lblQyDt.Text = "—";
+            // 
+            // ckboxQyEnableEndDt
+            // 
+            this.ckboxQyEnableEndDt.AutoSize = true;
+            this.ckboxQyEnableEndDt.Location = new System.Drawing.Point(1092, 19);
+            this.ckboxQyEnableEndDt.Name = "ckboxQyEnableEndDt";
+            this.ckboxQyEnableEndDt.Size = new System.Drawing.Size(18, 17);
+            this.ckboxQyEnableEndDt.TabIndex = 18;
+            this.ckboxQyEnableEndDt.UseVisualStyleBackColor = true;
+            this.ckboxQyEnableEndDt.Click += new System.EventHandler(this.ckboxQyEnableEndDt_Click);
+            // 
+            // dtpQyEndDt
+            // 
+            this.dtpQyEndDt.CustomFormat = "yyyy-MM-dd";
+            this.dtpQyEndDt.Enabled = false;
+            this.dtpQyEndDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpQyEndDt.Location = new System.Drawing.Point(936, 15);
+            this.dtpQyEndDt.Name = "dtpQyEndDt";
+            this.dtpQyEndDt.Size = new System.Drawing.Size(150, 25);
+            this.dtpQyEndDt.TabIndex = 17;
+            // 
+            // MRefund2SupplierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1447, 722);
-            this.Controls.Add(this.tabSOutOrders);
+            this.ClientSize = new System.Drawing.Size(1325, 720);
+            this.Controls.Add(this.tabRefundOrders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MStockOutForm";
-            this.Text = "MStockOutForm";
+            this.Name = "MRefund2SupplierForm";
+            this.Text = "MRefund2SupplierForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.tabSOutOrders.ResumeLayout(false);
+            this.tabRefundOrders.ResumeLayout(false);
             this.tabPCreatOrder.ResumeLayout(false);
             this.tabPCreatOrder.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvSOutGoods)).EndInit();
-            this.tabPSOutOrders.ResumeLayout(false);
-            this.tabPSOutOrders.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvMOutOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRfGoods)).EndInit();
+            this.tabPQyOrders.ResumeLayout(false);
+            this.tabPQyOrders.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvRfOrders)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabSOutOrders;
+        private System.Windows.Forms.TabControl tabRefundOrders;
         private System.Windows.Forms.TabPage tabPCreatOrder;
-        private System.Windows.Forms.TabPage tabPSOutOrders;
-        private System.Windows.Forms.Button btnAdd2List;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.DataGridView dtgvMOutOrders;
-        private System.Windows.Forms.ComboBox cboxQyReseller;
-        private System.Windows.Forms.Label lblQyReseller;
-        private System.Windows.Forms.TextBox txtQyOrderNO;
-        private System.Windows.Forms.Label lblQyOrderNO;
-        private System.Windows.Forms.CheckBox ckboxQyEnableStDt;
-        private System.Windows.Forms.DateTimePicker dtpQyStDt;
-        private System.Windows.Forms.Label lblQyCrtTm;
-        private System.Windows.Forms.Button btnOrderQuery;
-        private System.Windows.Forms.ComboBox cboxNResellers;
-        private System.Windows.Forms.Label lblReseller;
+        private System.Windows.Forms.Button btnBtchAdd;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ListBox lboxGoods;
         private System.Windows.Forms.TextBox txtGoodsInStock;
         private System.Windows.Forms.Label lblGoods;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.DataGridView dtgvSOutGoods;
-        private System.Windows.Forms.Button btnBtchAdd;
+        private System.Windows.Forms.ComboBox cboxNSupplier;
+        private System.Windows.Forms.Label lblSupplier;
+        private System.Windows.Forms.Button btnAdd2List;
+        private System.Windows.Forms.Button btnRefund;
+        private System.Windows.Forms.DataGridView dtgvRfGoods;
+        private System.Windows.Forms.TabPage tabPQyOrders;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSInOrderNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGName;
@@ -565,15 +555,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInvID;
-        private System.Windows.Forms.Label lblQyDt;
-        private System.Windows.Forms.CheckBox ckboxQyEnableEndDt;
-        private System.Windows.Forms.DateTimePicker dtpQyEndDt;
+        private System.Windows.Forms.ComboBox cboxQySupplier;
+        private System.Windows.Forms.Label lblQSupplier;
+        private System.Windows.Forms.CheckBox ckboxQyEnableStDt;
+        private System.Windows.Forms.Button btnOrderQuery;
+        private System.Windows.Forms.DateTimePicker dtpQyStDt;
+        private System.Windows.Forms.Label lblCrtTm;
+        private System.Windows.Forms.TextBox txtQyOrderNO;
+        private System.Windows.Forms.Label lblOrderNO;
+        private System.Windows.Forms.DataGridView dtgvRfOrders;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOrderNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colReseller;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQySupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCrtTmst;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCrtName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUptTmst;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUptName;
+        private System.Windows.Forms.Label lblQyDt;
+        private System.Windows.Forms.CheckBox ckboxQyEnableEndDt;
+        private System.Windows.Forms.DateTimePicker dtpQyEndDt;
     }
 }

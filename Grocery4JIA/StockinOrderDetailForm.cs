@@ -9,8 +9,8 @@ namespace UI
 {
     public partial class StockinOrderDetailForm : Form
     {
-        StockinManager manager;
-        public StockinOrderDetailForm(Order order, StockinManager manager)
+        StockInManager manager;
+        public StockinOrderDetailForm(Order order, StockInManager manager)
         {
             InitializeComponent();
             dtgvStockinOrderDetail.AutoGenerateColumns = false;
@@ -29,7 +29,7 @@ namespace UI
         {
             try
             {
-                List<StockinOrderDetailVO> data = manager.LoadOrderDetail(orderNO);
+                List<StockInOrderDetailVO> data = manager.LoadOrderDetail(orderNO);
                 if (null != data && data.Count > 0)
                 {
                     dtgvStockinOrderDetail.DataSource = null;

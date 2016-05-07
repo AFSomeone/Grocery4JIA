@@ -16,7 +16,7 @@ namespace UI
         List<InStockGoodsVO> goodsList;
         Customer customer;
 
-        public GoodsInStockForm(Customer customer, string title)
+        public GoodsInStockForm(Customer customer, string direct)
         {
             InitializeComponent();
             dtgvGoodsInStock.AutoGenerateColumns = false;
@@ -27,19 +27,34 @@ namespace UI
             if (null == manager)
                 manager = new InventoryManager();
             this.customer = customer;
+            string title = string.Empty;
+            if (DIRECT.REFUND2SUPPLIER == direct)
+                title = "退货单";
+            else if (DIRECT.STOCK_OUT == direct)
+                title = "出货单";
+            else
+                return;
             this.Text = "【" + title + "】" + " "+ customer.CName;
 
-            Customer cust = new Customer();
-            cust.Grade = GRADE.SUPPLIER;
-            cust.St = ST.VALID;
-            List<Customer> custs = custManager.LoadData(cust);
-
             List<Customer> custList = new List<Customer>();
-            Customer tmpCust = new Customer();
-            tmpCust.CID__PK = 0;
-            tmpCust.CName = "---选择---";
-            custList.Add(tmpCust);
-            custList.AddRange(custs);
+            if (DIRECT.REFUND2SUPPLIER == direct)
+            {
+                custList.Add(customer);
+            }
+            else if (DIRECT.STOCK_OUT == direct)
+            {
+                Customer cust = new Customer();
+                cust.Grade = GRADE.SUPPLIER;
+                cust.St = ST.VALID;
+                List<Customer> custs = custManager.LoadData(cust);
+
+                Customer tmpCust = new Customer();
+                tmpCust.CID__PK = 0;
+                tmpCust.CName = "---选择---";
+                custList.Add(tmpCust);
+                custList.AddRange(custs);
+            }
+            
             cboxSuppliers.DisplayMember = "CName";
             cboxSuppliers.ValueMember = "CID__PK";
             cboxSuppliers.DataSource = custList;

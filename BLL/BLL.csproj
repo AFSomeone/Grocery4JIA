@@ -43,7 +43,7 @@
     <Compile Include="Com\GoodsManager.cs" />
     <Compile Include="Com\InventoryManager.cs" />
     <Compile Include="Com\RefundManager.cs" />
-    <Compile Include="Com\StockinManager.cs" />
+    <Compile Include="Com\StockInManager.cs" />
     <Compile Include="Com\StockOutManager.cs" />
     <Compile Include="Com\SubCatgManager.cs" />
     <Compile Include="Admin\UsrManager.cs" />

@@ -12,9 +12,10 @@ namespace UI
         MCustomersForm mCustomersFrom;
         MGoodsForm mGoodsFrom;
         MStockinForm mStockinFrom;
-        MSinRefundForm mSinRefundFrom;
+        //MSinRefundForm mSinRefundFrom;
         MSupplyInfoForm mSupplyInfoForm;
         MStockOutForm mStockoutForm;
+        MRefund2SupplierForm mRefund2SupplierForm;
         public static Usr usr;
 
         public MainForm()
@@ -40,7 +41,7 @@ namespace UI
             MainForm.usr = loginUsr;
         }
 
-        private void initMGoods()
+        private void InitMGoods()
         {
             pnlMain.Controls.Clear();
             if (null != mGoodsFrom)
@@ -57,7 +58,7 @@ namespace UI
             mGoodsFrom.Show();
         }
 
-        private void initMCustomers(string grade)
+        private void InitMCustomers(string grade)
         {
             pnlMain.Controls.Clear();
             if (null != mCustomersFrom)
@@ -74,7 +75,7 @@ namespace UI
             mCustomersFrom.Show();
         }
 
-        private void initMStockin()
+        private void InitMStockin()
         {
             pnlMain.Controls.Clear();
             if (null != mStockinFrom)
@@ -91,6 +92,7 @@ namespace UI
             mStockinFrom.Show();
         }
 
+        /*
         private void initSinRefund()
         {
             pnlMain.Controls.Clear();
@@ -107,8 +109,26 @@ namespace UI
             mSinRefundFrom.Height = pnlMain.Height;
             mSinRefundFrom.Show();
         }
+        */
 
-        private void initSupplyInfoForm()
+        private void InitRefnd2Supplier()
+        {
+            pnlMain.Controls.Clear();
+            if (null != mRefund2SupplierForm)
+            {
+                mRefund2SupplierForm.Close();
+                mRefund2SupplierForm = null;
+            }
+            if (null == mRefund2SupplierForm)
+                mRefund2SupplierForm = new MRefund2SupplierForm();
+            mRefund2SupplierForm.TopLevel = false;
+            pnlMain.Controls.Add(mRefund2SupplierForm);
+            mRefund2SupplierForm.Width = pnlMain.Width;
+            mRefund2SupplierForm.Height = pnlMain.Height;
+            mRefund2SupplierForm.Show();
+        }
+
+        private void InitSupplyInfoForm()
         {
             pnlMain.Controls.Clear();
             if (null != mSupplyInfoForm)
@@ -125,7 +145,7 @@ namespace UI
             mSupplyInfoForm.Show();
         }
 
-        private void initMStockoutForm()
+        private void InitMStockoutForm()
         {
             pnlMain.Controls.Clear();
             if (null != mStockoutForm)
@@ -156,37 +176,37 @@ namespace UI
 
         private void muitSupplier_Click(object sender, EventArgs e)
         {
-            initMCustomers(GRADE.SUPPLIER);
+            InitMCustomers(GRADE.SUPPLIER);
         }
 
         private void muitReseller_Click(object sender, EventArgs e)
         {
-            initMCustomers(GRADE.RESELLER);
+            InitMCustomers(GRADE.RESELLER);
         }
 
         private void muitGoods_Click(object sender, EventArgs e)
         {
-            initMGoods();
+            InitMGoods();
         }
 
         private void muitStockin_Click(object sender, EventArgs e)
         {
-            initMStockin();
+            InitMStockin();
         }
 
         private void muitRefund_Click(object sender, EventArgs e)
         {
-            initSinRefund();
+            InitRefnd2Supplier();
         }
 
         private void suitSpplyInfo_Click(object sender, EventArgs e)
         {
-            initSupplyInfoForm();
+            InitSupplyInfoForm();
         }
 
         private void muitStockOut_Click(object sender, EventArgs e)
         {
-            initMStockoutForm();
+            InitMStockoutForm();
         }
     }
 }

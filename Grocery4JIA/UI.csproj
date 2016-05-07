@@ -115,11 +115,11 @@
     <Compile Include="MGoodsForm.Designer.cs">
       <DependentUpon>MGoodsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MSinRefundForm.cs">
+    <Compile Include="MRefund2SupplierForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MSinRefundForm.Designer.cs">
-      <DependentUpon>MSinRefundForm.cs</DependentUpon>
+    <Compile Include="MRefund2SupplierForm.Designer.cs">
+      <DependentUpon>MRefund2SupplierForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MStockinForm.cs">
       <SubType>Form</SubType>
@@ -147,23 +147,17 @@
     <Compile Include="RefundOrderDetailForm.Designer.cs">
       <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SinRefundForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SinRefundForm.Designer.cs">
-      <DependentUpon>SinRefundForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StockinForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockinForm.Designer.cs">
-      <DependentUpon>StockinForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="StockinOrderDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="StockinOrderDetailForm.Designer.cs">
       <DependentUpon>StockinOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockOutOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockOutOrderDetailForm.Designer.cs">
+      <DependentUpon>StockOutOrderDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SubCatgForm.cs">
       <SubType>Form</SubType>
@@ -176,6 +170,12 @@
     </Compile>
     <Compile Include="MSupplyInfoForm.Designer.cs">
       <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupplyGoodsForm.Designer.cs">
+      <DependentUpon>SupplyGoodsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TestForm.cs">
       <SubType>Form</SubType>
@@ -210,8 +210,8 @@
     <EmbeddedResource Include="MGoodsForm.resx">
       <DependentUpon>MGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MSinRefundForm.resx">
-      <DependentUpon>MSinRefundForm.cs</DependentUpon>
+    <EmbeddedResource Include="MRefund2SupplierForm.resx">
+      <DependentUpon>MRefund2SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MStockinForm.resx">
       <DependentUpon>MStockinForm.cs</DependentUpon>
@@ -235,20 +235,20 @@
     <EmbeddedResource Include="RefundOrderDetailForm.resx">
       <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SinRefundForm.resx">
-      <DependentUpon>SinRefundForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StockinForm.resx">
-      <DependentUpon>StockinForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="StockinOrderDetailForm.resx">
       <DependentUpon>StockinOrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockOutOrderDetailForm.resx">
+      <DependentUpon>StockOutOrderDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubCatgForm.resx">
       <DependentUpon>SubCatgForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MSupplyInfoForm.resx">
       <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupplyGoodsForm.resx">
+      <DependentUpon>SupplyGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>

@@ -9,60 +9,64 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class MStockOutForm : Form
+    public partial class MRefund2SupplierForm : Form
     {
         CustomerManager custManager;
+        SubCatgManager subCatgManager;
+        RefundManager refundManager;
         GoodsManager goodsManager;
         InStockGoodsVO goodsInStock;
-        StockOutManager stockOutManager;
 
-        public MStockOutForm()
+        public MRefund2SupplierForm()
         {
             InitializeComponent();
-            dtgvSOutGoods.AutoGenerateColumns = false;
-            dtgvMOutOrders.AutoGenerateColumns = false;
-
+            dtgvRfGoods.AutoGenerateColumns = false;
+            dtgvRfOrders.AutoGenerateColumns = false;
             if (null == custManager)
                 custManager = new CustomerManager();
+            if (null == subCatgManager)
+                subCatgManager = new SubCatgManager();
+            if (null == refundManager)
+                refundManager = new RefundManager();
             if (null == goodsManager)
                 goodsManager = new GoodsManager();
-            if (null == stockOutManager)
-                stockOutManager = new StockOutManager();
 
             Customer cust = new Customer();
-            cust.Grade = GRADE.RESELLER;
+            cust.Grade = GRADE.SUPPLIER;
             cust.St = ST.VALID;
-            List<Customer> resellers = custManager.LoadData(cust);
+            List<Customer> custs = custManager.LoadData(cust);
 
-            cboxNResellers.DisplayMember = "CName";
-            cboxNResellers.ValueMember = "CID__PK";
-            cboxNResellers.DataSource = resellers;
+            cboxNSupplier.DisplayMember = "CName";
+            cboxNSupplier.ValueMember = "CID__PK";
+            cboxNSupplier.DataSource = custs;
 
-            List<Customer> qyResellers = new List<Customer>();
-            Customer reseller = new Customer();
-            reseller.CID__PK = 0;
-            reseller.CName = "---选择---";
-            qyResellers.AddRange(resellers);
-
-            cboxQyReseller.DisplayMember = "CName";
-            cboxQyReseller.ValueMember = "CID__PK";
-            cboxQyReseller.DataSource = qyResellers;
+            List<Customer> custList = new List<Customer>();
+            Customer tmpCust = new Customer();
+            tmpCust.CID__PK = 0;
+            tmpCust.CName = "---选择---";
+            custList.Add(tmpCust);
+            custList.AddRange(custs);
+            cboxQySupplier.DisplayMember = "CName";
+            cboxQySupplier.ValueMember = "CID__PK";
+            cboxQySupplier.DataSource = custList;
         }
 
         private void InitRow(int index, InStockGoodsVO goods)
         {
-            dtgvSOutGoods.Rows[index].Cells[colGID.Name].Value = goods.GID;
-            dtgvSOutGoods.Rows[index].Cells[colSpecs.Name].Value = goods.Specs;
-            dtgvSOutGoods.Rows[index].Cells[colInPric.Name].Value = goods.Price;
-            dtgvSOutGoods.Rows[index].Cells[colInvNum.Name].Value = goods.Num;
-            dtgvSOutGoods.Rows[index].Cells[colExpDt.Name].Value = goods.ExpDt;
-            dtgvSOutGoods.Rows[index].Cells[colSInOrderNO.Name].Value = goods.OrderNO;
-            dtgvSOutGoods.Rows[index].Cells[colInvID.Name].Value = goods.InvID;
-            dtgvSOutGoods.Rows[index].Cells[colSupplier.Name].Value = goods.CustName;
+            dtgvRfGoods.Rows[index].Cells[colGID.Name].Value = goods.GID;
+            dtgvRfGoods.Rows[index].Cells[colSpecs.Name].Value = goods.Specs;
+            dtgvRfGoods.Rows[index].Cells[colInPric.Name].Value = goods.Price;
+            dtgvRfGoods.Rows[index].Cells[colInvNum.Name].Value = goods.Num;
+            dtgvRfGoods.Rows[index].Cells[colExpDt.Name].Value = goods.ExpDt;
+            dtgvRfGoods.Rows[index].Cells[colSInOrderNO.Name].Value = goods.OrderNO;
+            dtgvRfGoods.Rows[index].Cells[colInvID.Name].Value = goods.InvID;
+            dtgvRfGoods.Rows[index].Cells[colSupplier.Name].Value = goods.CustName;
+            dtgvRfGoods.Rows[index].Cells[colNum.Name].Value = goods.Num;
+            dtgvRfGoods.Rows[index].Cells[colPrice.Name].Value = goods.Price;
             if (goods.GName.IndexOf("[") > 0)
-                dtgvSOutGoods.Rows[index].Cells[colGName.Name].Value = goods.GName.Substring(0, goods.GName.IndexOf("["));
+                dtgvRfGoods.Rows[index].Cells[colGName.Name].Value = goods.GName.Substring(0, goods.GName.IndexOf("["));
             else
-                dtgvSOutGoods.Rows[index].Cells[colGName.Name].Value = goods.GName;
+                dtgvRfGoods.Rows[index].Cells[colGName.Name].Value = goods.GName;
         }
 
         private void txtGoodsInStock_KeyUp(object sender, KeyEventArgs e)
@@ -86,11 +90,12 @@ namespace UI
             else
             {
                 string term = txtGoodsInStock.Text;
-                if (!StringUtil.isEmpty(term) && term.Trim().Length>1)
+                if (!StringUtil.isEmpty(term) && term.Trim().Length > 1)
                 {
                     Goods tgoods = new Goods();
                     tgoods.St = ST.VALID;
-                    List<InStockGoodsVO> list = goodsManager.LoadInStockGoodsByKeyWords(term.Trim());
+                    Customer supplier = cboxNSupplier.SelectedItem as Customer;
+                    List<InStockGoodsVO> list = goodsManager.LoadInStockGoodsByKeyWords(term.Trim(), supplier.CID__PK);
                     for (int i = 0; i < list.Count; i++)
                     {
                         InStockGoodsVO vo = list[i];
@@ -130,69 +135,23 @@ namespace UI
             lboxGoods.SelectedIndex = lboxGoods.IndexFromPoint(e.Location);
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            StockOutOrderVO orderVO = null;
-            List<StockOut> soutList = new List<StockOut>();
-            List<OrderGoodsVO> glist = new List<OrderGoodsVO>();
-            foreach (DataGridViewRow row in dtgvSOutGoods.Rows)
-            {
-                object numObj = row.Cells[colNum.Name].Value;
-                object priceObj = row.Cells[colPrice.Name].Value;
-                if (null == numObj || null == priceObj)
-                    continue;
-                StockOut sout = new StockOut();
-                sout.InvID = StringUtil.Obj2Long(row.Cells[colInvID.Name].Value);
-                sout.Num = StringUtil.Obj2Int(numObj);
-                sout.Price = StringUtil.Obj2Decimal(priceObj);
-                if (sout.Num * sout.Price == 0)
-                    continue;
-                soutList.Add(sout);
-
-                OrderGoodsVO vo = new OrderGoodsVO();
-                vo.GID = StringUtil.Obj2Int(row.Cells[colGID.Name].Value);
-                vo.GName = StringUtil.Obj2Str(row.Cells[colGName.Name].Value);
-                vo.Num = sout.Num;
-                vo.Price = sout.Price;
-                vo.Specs = StringUtil.Obj2Str(row.Cells[colSpecs.Name].Value);
-                glist.Add(vo);
-            }
-            if (soutList.Count < 1)
-                return;
-            Customer reseller = cboxNResellers.SelectedItem as Customer;
-            OrderCnfrmDialog cnfrmDialog = new OrderCnfrmDialog("【出货单-明细】 "+reseller.CName, glist);
-            DialogResult rslt = cnfrmDialog.ShowDialog();
-            if (DialogResult.OK != rslt)
-                return;
-
-            orderVO = new StockOutOrderVO();
-            orderVO.Direct = DIRECT.STOCK_OUT;
-            orderVO._StockOutList = soutList;
-            orderVO.CustID = reseller.CID__PK;
-            orderVO.CustName = reseller.CName;
-            Usr lgnUsr = MainForm.usr;
-            orderVO.CrtUID = lgnUsr.UId__PK;
-            orderVO.UptUID = lgnUsr.UId__PK;
-
-            string orderNO = stockOutManager.StockOut(orderVO);
-            if (!StringUtil.isEmpty(orderNO))
-            {
-                MessageBox.Show("出货单创建成功！ 单号："+orderNO, "操作结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-                MessageBox.Show("出货单创建失败！", "操作结果", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
         private void btnAdd2List_Click(object sender, EventArgs e)
         {
             if (null == goodsInStock)
             {
                 if (!StringUtil.isEmpty(txtGoodsInStock.Text))
-                    MessageBox.Show("无此商品！请重新选择！", "操作结果", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                {
+                    DialogResult rslt = MessageBox.Show("无此商品！是否新增？", "操作结果", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (rslt == DialogResult.OK)
+                    {
+                        GoodsForm gForm = new GoodsForm(null, goodsManager, new SubCatgManager());
+                        gForm.ShowDialog();
+                    }
+                }
                 txtGoodsInStock.Text = "";
                 return;
             }
-            foreach (DataGridViewRow row in dtgvSOutGoods.Rows)
+            foreach (DataGridViewRow row in dtgvRfGoods.Rows)
             {
                 long invId = StringUtil.Obj2Long(row.Cells[colInvID.Name].Value);
                 if (invId == goodsInStock.InvID)
@@ -202,29 +161,21 @@ namespace UI
                     return;
                 }
             }
-            int index = dtgvSOutGoods.Rows.Add();
+            int index = dtgvRfGoods.Rows.Add();
             InitRow(index, goodsInStock);
             txtGoodsInStock.Text = "";
             goodsInStock = null;
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dtgvSOutGoods.SelectedRows)
-            {
-                dtgvSOutGoods.Rows.Remove(row);
-            }
-        }
-
         private void btnBtchAdd_Click(object sender, EventArgs e)
         {
-            Customer reseller = cboxNResellers.SelectedItem as Customer;
-            GoodsInStockForm goodsInFrom = new GoodsInStockForm(reseller, DIRECT.STOCK_OUT);
+            Customer supplier = cboxNSupplier.SelectedItem as Customer;
+            GoodsInStockForm goodsInFrom = new GoodsInStockForm(supplier, DIRECT.REFUND2SUPPLIER);
             DialogResult rslt = goodsInFrom.ShowDialog();
             if (rslt == DialogResult.OK)
             {
                 List<long> addedGoods = new List<long>();
-                foreach (DataGridViewRow row in dtgvSOutGoods.Rows)
+                foreach (DataGridViewRow row in dtgvRfGoods.Rows)
                 {
                     long invId = StringUtil.Obj2Long(row.Cells[colInvID.Name].Value);
                     addedGoods.Add(invId);
@@ -234,26 +185,26 @@ namespace UI
                 {
                     if (addedGoods.Contains(vo.InvID))
                         continue;
-                    int index = dtgvSOutGoods.Rows.Add();
+                    int index = dtgvRfGoods.Rows.Add();
                     InitRow(index, vo);
                 }
             }
         }
 
-        private void dtgvSOutGoods_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        private void dtgvRfGoods_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             DataGridViewTextBoxEditingControl cellEditor = e.Control as DataGridViewTextBoxEditingControl;
             cellEditor.SelectAll();
-            cellEditor.KeyPress += dtgvSOutGoods_Cell_KeyPress;
+            cellEditor.KeyPress += dtgvRfGoods_Cell_KeyPress;
         }
 
 
-        private void dtgvSOutGoods_Cell_KeyPress(object sender, KeyPressEventArgs e)
+        private void dtgvRfGoods_Cell_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (dtgvSOutGoods.CurrentRow.Index < 0)
+            if (dtgvRfGoods.CurrentRow.Index < 0)
                 return;
-            int colIndex = dtgvSOutGoods.CurrentCell.ColumnIndex;
-            if (dtgvSOutGoods.Columns[colIndex].Name == colNum.Name)
+            int colIndex = dtgvRfGoods.CurrentCell.ColumnIndex;
+            if (dtgvRfGoods.Columns[colIndex].Name == colNum.Name)
             {
                 int keyVal = Convert.ToInt32(e.KeyChar);
                 if ((keyVal < 48 || keyVal > 57) && keyVal != 8 && keyVal != 13)
@@ -263,7 +214,7 @@ namespace UI
                     DataGridViewTextBoxEditingControl srCellEditor = sender as DataGridViewTextBoxEditingControl;
                     if (!StringUtil.isEmpty(srCellEditor.Text))
                     {
-                        int invNum = StringUtil.Obj2Int(dtgvSOutGoods.CurrentRow.Cells[colInvNum.Name].Value);
+                        int invNum = StringUtil.Obj2Int(dtgvRfGoods.CurrentRow.Cells[colInvNum.Name].Value);
                         if (int.Parse(srCellEditor.Text + e.KeyChar) > invNum)
                             e.Handled = true;
                     }
@@ -274,7 +225,7 @@ namespace UI
                     }
                 }
             }
-            else if (dtgvSOutGoods.Columns[colIndex].Name == colPrice.Name)
+            else if (dtgvRfGoods.Columns[colIndex].Name == colPrice.Name)
             {
                 int keyVal = Convert.ToInt32(e.KeyChar);
                 if ((keyVal < 48 || keyVal > 57) && keyVal != 8 && keyVal != 13 && keyVal != 46)
@@ -299,26 +250,87 @@ namespace UI
             }
         }
 
-        private void dtgvSOutGoods_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dtgvRfGoods_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgvSOutGoods.CurrentRow.Index < 0)
+            if (dtgvRfGoods.CurrentRow.Index < 0)
                 return;
-            if (dtgvSOutGoods.Columns[e.ColumnIndex].Name == colPrice.Name)
+            if (dtgvRfGoods.Columns[e.ColumnIndex].Name == colPrice.Name)
             {
-                object price = dtgvSOutGoods.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                object price = dtgvRfGoods.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
                 if (null != price)
                 {
                     if (price.ToString().EndsWith("."))
                     {
                         price = price + "0";
-                        dtgvSOutGoods.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = price;
+                        dtgvRfGoods.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = price;
                     }
                     if (price.ToString().StartsWith("."))
                     {
                         price = "0" + price;
-                        dtgvSOutGoods.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = price;
+                        dtgvRfGoods.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = price;
                     }
                 }
+            }
+        }
+
+        private void btnRefund_Click(object sender, EventArgs e)
+        {
+            RefundOrderVO refundVO = null;
+            List<Refund> list = new List<Refund>();
+            List<OrderGoodsVO> glist = new List<OrderGoodsVO>();
+            foreach (DataGridViewRow row in dtgvRfGoods.Rows)
+            {
+                object numObj = row.Cells[colNum.Name].Value;
+                object priceObj = row.Cells[colPrice.Name].Value;
+                if (null == numObj || null == priceObj)
+                    continue;
+                Refund rf = new Refund();
+                rf.Direct = DIRECT.REFUND2SUPPLIER;
+                rf.InvID = StringUtil.Obj2Long(row.Cells[colInvID.Name].Value);
+                rf.Num = StringUtil.Obj2Int(numObj);
+                rf.Price = StringUtil.Obj2Decimal(priceObj);
+                if (rf.Num * rf.Price == 0)
+                    continue;
+                list.Add(rf);
+
+                OrderGoodsVO vo = new OrderGoodsVO();
+                vo.GID = StringUtil.Obj2Int(row.Cells[colGID.Name].Value);
+                vo.GName = StringUtil.Obj2Str(row.Cells[colGName.Name].Value);
+                vo.Num = rf.Num;
+                vo.Price = rf.Price;
+                vo.Specs = StringUtil.Obj2Str(row.Cells[colSpecs.Name].Value);
+                glist.Add(vo);
+            }
+            if (list.Count < 1)
+                return;
+            Customer supplier = cboxNSupplier.SelectedItem as Customer;
+            OrderCnfrmDialog cnfrmDialog = new OrderCnfrmDialog("【退货单-明细】 " + supplier.CName, glist);
+            DialogResult rslt = cnfrmDialog.ShowDialog();
+            if (DialogResult.OK != rslt)
+                return;
+
+            refundVO = new RefundOrderVO();
+            refundVO.CustID = supplier.CID__PK;
+            refundVO.CustName = supplier.CName;
+            refundVO.Direct = DIRECT.REFUND2SUPPLIER;
+            refundVO.UptUID = MainForm.usr.UId__PK;
+            refundVO.CrtUID = MainForm.usr.UId__PK;
+            refundVO._RefundList = list;
+
+            string orderNO = refundManager.Refund(refundVO);
+            if (!StringUtil.isEmpty(orderNO))
+            {
+                MessageBox.Show("商品已退回！退单号：" + orderNO, "操作结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("商品退回失败！", "操作结果", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dtgvRfGoods.SelectedRows)
+            {
+                dtgvRfGoods.Rows.Remove(row);
             }
         }
 
@@ -327,7 +339,7 @@ namespace UI
             DateTime? startDt = null;
             DateTime? endDt = null;
             Order order = new Order();
-            order.Direct = DIRECT.STOCK_OUT;
+            order.Direct = DIRECT.REFUND2SUPPLIER;
             if (!StringUtil.isEmpty(txtQyOrderNO.Text))
                 order.OrderNO = txtQyOrderNO.Text.Trim();
             if (ckboxQyEnableStDt.Checked)
@@ -340,11 +352,26 @@ namespace UI
                 string dtStr = dtpQyEndDt.Value.ToString("yyyyMMdd");
                 endDt = DateTime.ParseExact(dtStr, "yyyyMMdd", null);
             }
-            int custId = StringUtil.Obj2Int(cboxQyReseller.SelectedValue);
+            int custId = StringUtil.Obj2Int(cboxQySupplier.SelectedValue);
             if (custId != 0)
                 order.CustID = custId;
-            List<OrderVO> list = stockOutManager.LoadOrders(order, startDt, endDt);
-            dtgvMOutOrders.DataSource = list;
+            List<OrderVO> list = refundManager.LoadOrders(order, startDt, endDt);
+            dtgvRfOrders.DataSource = list;
+        }
+
+        private void dtgvRfOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow curRow = dtgvRfOrders.CurrentRow;
+            if (null != curRow)
+            {
+                Order order = new Order();
+                order.Amount = StringUtil.Obj2Decimal(curRow.Cells[colAmount.Name].Value);
+                order.OrderNO = StringUtil.Obj2Str(curRow.Cells[colOrderNO.Name].Value);
+                order.CustName = StringUtil.Obj2Str(curRow.Cells[colQySupplier.Name].Value);
+
+                RefundOrderDetailForm detailForm = new RefundOrderDetailForm(order, refundManager);
+                detailForm.ShowDialog();
+            }
         }
 
         private void ckboxQyEnableStDt_Click(object sender, EventArgs e)
@@ -355,27 +382,12 @@ namespace UI
                 dtpQyStDt.Enabled = false;
         }
 
-        private void ckboxEnableEndDt_Click(object sender, EventArgs e)
+        private void ckboxQyEnableEndDt_Click(object sender, EventArgs e)
         {
             if (ckboxQyEnableEndDt.Checked)
                 dtpQyEndDt.Enabled = true;
             else
                 dtpQyEndDt.Enabled = false;
-        }
-
-        private void dtgvMOutOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow curRow = dtgvMOutOrders.CurrentRow;
-            if (null != curRow)
-            {
-                Order order = new Order();
-                order.Amount = StringUtil.Obj2Decimal(curRow.Cells[colAmount.Name].Value);
-                order.OrderNO = StringUtil.Obj2Str(curRow.Cells[colOrderNO.Name].Value);
-                order.CustName = StringUtil.Obj2Str(curRow.Cells[colReseller.Name].Value);
-
-                StockOutOrderDetailForm detailForm = new StockOutOrderDetailForm(order, stockOutManager);
-                detailForm.ShowDialog();
-            }
         }
     }
 }

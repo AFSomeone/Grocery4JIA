@@ -7,29 +7,32 @@ using System.Collections.Generic;
 
 namespace BLL.Com
 {
-    public class StockinManager
+    public class StockInManager
     {
         StockInService service;
-        public StockinManager()
+        OrderService orderService;
+        public StockInManager()
         {
             service = new StockInService();
         }
 
-        public string Stockin(StockinOrderVO orderVO)
+        public string Stockin(StockInOrderVO orderVO)
         {
             if (null == orderVO || orderVO._StockinList.Count == 0)
                 return string.Empty;
             return service.Stockin(orderVO);
         }
 
-        public List<StockinOrderVO> LoadOrders(Order order)
+        public List<OrderVO> LoadOrders(Order order, DateTime? startDt, DateTime? endDt)
         {
             if (null == order)
                 return null;
-            return service.LoadOrders(order);
+            if (null == orderService)
+                orderService = new OrderService();
+            return orderService.LoadOrders(order, startDt, endDt);
         }
 
-        public List<StockinOrderDetailVO> LoadOrderDetail(string orderNO)
+        public List<StockInOrderDetailVO> LoadOrderDetail(string orderNO)
         {
             if (StringUtil.isEmpty(orderNO))
                 return null;

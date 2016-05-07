@@ -2,7 +2,7 @@
 
 namespace Model.VO
 {
-    public class StockinOrderDetailVO : StockIn
+    public class StockInOrderDetailVO : StockIn
     {
         private string gName;
         private string specs;

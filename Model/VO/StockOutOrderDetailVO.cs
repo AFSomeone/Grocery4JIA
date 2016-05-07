@@ -1,13 +1,27 @@
 ﻿
+using Model.Entity;
+
 namespace Model.VO
 {
-    public class OrderGoodsVO
+    public class StockOutOrderDetailVO : StockOut
     {
+        private string sinOrderNO;
         private int gID;
         private string gName;
-        private int num;
-        private decimal price;
         private string specs;
+
+        public string SinOrderNO
+        {
+            get
+            {
+                return sinOrderNO;
+            }
+
+            set
+            {
+                sinOrderNO = value;
+            }
+        }
 
         public int GID
         {
@@ -32,32 +46,6 @@ namespace Model.VO
             set
             {
                 gName = value;
-            }
-        }
-
-        public int Num
-        {
-            get
-            {
-                return num;
-            }
-
-            set
-            {
-                num = value;
-            }
-        }
-
-        public decimal Price
-        {
-            get
-            {
-                return price;
-            }
-
-            set
-            {
-                price = value;
             }
         }
 

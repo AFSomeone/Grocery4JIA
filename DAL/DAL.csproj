@@ -47,6 +47,7 @@
     <Compile Include="Com\CustomerService.cs" />
     <Compile Include="Com\GoodsService.cs" />
     <Compile Include="Com\InventoryService.cs" />
+    <Compile Include="Com\OrderService.cs" />
     <Compile Include="Com\RefundService.cs" />
     <Compile Include="Com\StockInService.cs" />
     <Compile Include="Com\StockOutService.cs" />

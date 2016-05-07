@@ -1,5 +1,4 @@
 ﻿using DAL.Com;
-using Model.Const;
 using Model.Entity;
 using Model.Util;
 using Model.VO;
@@ -11,6 +10,7 @@ namespace BLL.Com
     public class RefundManager
     {
         RefundService service;
+        OrderService orderService;
         public RefundManager()
         {
             service = new RefundService();
@@ -26,11 +26,13 @@ namespace BLL.Com
             return service.Refund(refundVO);
         }
 
-        public List<RefundOrderVO> LoadOrders(Order order)
+        public List<OrderVO> LoadOrders(Order order, DateTime? startDt, DateTime? endDt)
         {
             if (null == order)
                 return null;
-            return service.LoadOrders(order);
+            if (null == orderService)
+                orderService = new OrderService();
+            return orderService.LoadOrders(order, startDt, endDt);
         }
 
         public List<RefundOrderDetailVO> LoadOrderDetail(string orderNO)

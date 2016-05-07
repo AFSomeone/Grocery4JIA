@@ -14,7 +14,7 @@ namespace DAL.Com
         /// </summary>
         /// <param name="vo"></param>
         /// <returns>入库单号</returns>
-        public string Stockin(StockinOrderVO vo)
+        public string Stockin(StockInOrderVO vo)
         {
             string orderNO = string.Empty;
             DateTime now = DateTime.Now;
@@ -63,71 +63,11 @@ namespace DAL.Com
         }
 
         /// <summary>
-        /// 加载入库单信息
-        /// </summary>
-        /// <param name="order"></param>
-        /// <returns>入库单列表</returns>
-        public List<StockinOrderVO> LoadOrders(Order order)
-        {
-            string sql = "SELECT od.OrderNO,"
-                       + "od.Amount,"
-                       + "od.CustID,"
-                       + "od.CustName,"
-                       + "od.Direct,"
-                       + "od.UptTmst,"
-                       + "od.CrtTmst,"
-                       + "od.UptUID,"
-                       + "od.CrtUID,"
-                       + "u1.UName as crtUName,"
-                       + "u2.UName as uptUName "
-                       + "FROM ORDERS od,"
-                       + "USR u1,"
-                       + "USR u2 "
-                       + "WHERE od.CrtUID=u1.UID "
-                       + "AND od.UptUID=u2.UID ";
-            Dictionary<string, object> values = null;
-            if (!StringUtil.isEmpty(order.Direct))
-            {
-                if (null == values)
-                    values = new Dictionary<string, object>();
-                sql += "AND od.Direct=@Direct ";
-                values.Add("Direct",order.Direct);
-            }
-            if (null != order.CrtTmst)
-            {
-                DateTime startDt = ((DateTime)order.CrtTmst).AddDays(-1);
-                DateTime endDt = ((DateTime)order.CrtTmst).AddDays(1);
-                sql += "AND od.CrtTmst>=@StDt AND od.CrtTmst<=@EndDt ";
-                if (null == values)
-                    values = new Dictionary<string, object>();
-                values.Add("StDt", startDt);
-                values.Add("EndDt", endDt);
-            }
-            if (!StringUtil.isEmpty(order.OrderNO))
-            {
-                sql += "AND od.OrderNO LIKE @OrderNO ";
-                if (null == values)
-                    values = new Dictionary<string, object>();
-                values.Add("OrderNO", "%" + order.OrderNO + "%");
-
-            }
-            if (order.CustID != 0)
-            {
-                sql += "AND od.CustID=@CustID ";
-                if (null == values)
-                    values = new Dictionary<string, object>();
-                values.Add("CustID", order.CustID);
-            }
-            sql += "ORDER BY od.OrderNO DESC";
-            return Connector.LoadModels<StockinOrderVO>(sql, values);
-        }
-
-        /// <summary>
         /// 加载入库单明细
         /// </summary>
         /// <param name="orderNO"></param>
         /// <returns></returns>
-        public List<StockinOrderDetailVO> LoadOrderDetail(string orderNO)
+        public List<StockInOrderDetailVO> LoadOrderDetail(string orderNO)
         {
             string sql = "SELECT s.SID,"
                         +"s.GID,"
@@ -144,7 +84,7 @@ namespace DAL.Com
                         +"ORDER BY s.SID";
             Dictionary<string, object> values = new Dictionary<string, object>();
             values.Add("OrderNO", orderNO);
-            return Connector.LoadModels<StockinOrderDetailVO>(sql,values);
+            return Connector.LoadModels<StockInOrderDetailVO>(sql,values);
         }
 
         /// <summary>

@@ -3,24 +3,9 @@ using System.Collections.Generic;
 
 namespace Model.VO
 {
-    public class StockinOrderVO : Order
+    public class StockInOrderVO : Order
     {
-        private string crtUName;
-        private string uptUName;
         private List<StockIn> _stockinList;
-
-        public string CrtUName
-        {
-            get
-            {
-                return crtUName;
-            }
-
-            set
-            {
-                crtUName = value;
-            }
-        }
 
         public List<StockIn> _StockinList
         {
@@ -32,19 +17,6 @@ namespace Model.VO
             set
             {
                 _stockinList = value;
-            }
-        }
-
-        public string UptUName
-        {
-            get
-            {
-                return uptUName;
-            }
-
-            set
-            {
-                uptUName = value;
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class RefundOrderDetailForm
+    partial class StockOutOrderDetailForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RefundOrderDetailForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockOutOrderDetailForm));
             this.btnClose = new System.Windows.Forms.Button();
             this.lblAmountValue = new System.Windows.Forms.Label();
             this.lblAmount = new System.Windows.Forms.Label();
-            this.dtgvRefundOrderDetail = new System.Windows.Forms.DataGridView();
+            this.dtgvSOutOrderDetail = new System.Windows.Forms.DataGridView();
             this.colSinOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,15 +40,15 @@
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInvID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvRefundOrderDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSOutOrderDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1123, 605);
+            this.btnClose.Location = new System.Drawing.Point(1122, 630);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 30);
-            this.btnClose.TabIndex = 12;
+            this.btnClose.TabIndex = 16;
             this.btnClose.Text = "关闭";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -56,27 +56,27 @@
             // lblAmountValue
             // 
             this.lblAmountValue.AutoSize = true;
-            this.lblAmountValue.Location = new System.Drawing.Point(115, 613);
+            this.lblAmountValue.Location = new System.Drawing.Point(114, 638);
             this.lblAmountValue.Name = "lblAmountValue";
             this.lblAmountValue.Size = new System.Drawing.Size(15, 15);
-            this.lblAmountValue.TabIndex = 11;
+            this.lblAmountValue.TabIndex = 15;
             this.lblAmountValue.Text = "0";
             // 
             // lblAmount
             // 
             this.lblAmount.AutoSize = true;
-            this.lblAmount.Location = new System.Drawing.Point(9, 613);
+            this.lblAmount.Location = new System.Drawing.Point(8, 638);
             this.lblAmount.Name = "lblAmount";
             this.lblAmount.Size = new System.Drawing.Size(97, 15);
-            this.lblAmount.TabIndex = 10;
+            this.lblAmount.TabIndex = 14;
             this.lblAmount.Text = "总计（元）：";
             // 
-            // dtgvRefundOrderDetail
+            // dtgvSOutOrderDetail
             // 
-            this.dtgvRefundOrderDetail.AllowUserToAddRows = false;
-            this.dtgvRefundOrderDetail.AllowUserToDeleteRows = false;
-            this.dtgvRefundOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvRefundOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvSOutOrderDetail.AllowUserToAddRows = false;
+            this.dtgvSOutOrderDetail.AllowUserToDeleteRows = false;
+            this.dtgvSOutOrderDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvSOutOrderDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSinOrderNO,
             this.colGID,
             this.colGName,
@@ -84,13 +84,13 @@
             this.colPrice,
             this.colNum,
             this.colInvID});
-            this.dtgvRefundOrderDetail.Location = new System.Drawing.Point(6, 2);
-            this.dtgvRefundOrderDetail.Name = "dtgvRefundOrderDetail";
-            this.dtgvRefundOrderDetail.ReadOnly = true;
-            this.dtgvRefundOrderDetail.RowTemplate.Height = 27;
-            this.dtgvRefundOrderDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvRefundOrderDetail.Size = new System.Drawing.Size(1202, 587);
-            this.dtgvRefundOrderDetail.TabIndex = 9;
+            this.dtgvSOutOrderDetail.Location = new System.Drawing.Point(5, 6);
+            this.dtgvSOutOrderDetail.Name = "dtgvSOutOrderDetail";
+            this.dtgvSOutOrderDetail.ReadOnly = true;
+            this.dtgvSOutOrderDetail.RowTemplate.Height = 27;
+            this.dtgvSOutOrderDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvSOutOrderDetail.Size = new System.Drawing.Size(1202, 613);
+            this.dtgvSOutOrderDetail.TabIndex = 13;
             // 
             // colSinOrderNO
             // 
@@ -130,7 +130,7 @@
             // 
             this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colPrice.DataPropertyName = "Price";
-            this.colPrice.HeaderText = "退货价/元";
+            this.colPrice.HeaderText = "出货价/元";
             this.colPrice.MaxInputLength = 100;
             this.colPrice.Name = "colPrice";
             this.colPrice.ReadOnly = true;
@@ -141,7 +141,7 @@
             // 
             this.colNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colNum.DataPropertyName = "Num";
-            this.colNum.HeaderText = "退货数量";
+            this.colNum.HeaderText = "出货数量";
             this.colNum.MaxInputLength = 100;
             this.colNum.Name = "colNum";
             this.colNum.ReadOnly = true;
@@ -156,22 +156,22 @@
             this.colInvID.ReadOnly = true;
             this.colInvID.Visible = false;
             // 
-            // RefundOrderDetailForm
+            // StockOutOrderDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 648);
+            this.ClientSize = new System.Drawing.Size(1214, 674);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblAmountValue);
             this.Controls.Add(this.lblAmount);
-            this.Controls.Add(this.dtgvRefundOrderDetail);
+            this.Controls.Add(this.dtgvSOutOrderDetail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "RefundOrderDetailForm";
+            this.Name = "StockOutOrderDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvRefundOrderDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvSOutOrderDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,7 +182,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblAmountValue;
         private System.Windows.Forms.Label lblAmount;
-        private System.Windows.Forms.DataGridView dtgvRefundOrderDetail;
+        private System.Windows.Forms.DataGridView dtgvSOutOrderDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSinOrderNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGName;

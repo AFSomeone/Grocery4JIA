@@ -1,6 +1,7 @@
 ﻿
 using Model.Const;
 using Model.Entity;
+using Model.Util;
 using Model.VO;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,27 @@ namespace DAL.Com
                 orderNO = string.Empty;
             }
             return orderNO;
+        }
+
+        public List<StockOutOrderDetailVO> LoadOrderDetail(string orderNO)
+        {
+            string sql = "SELECT s.SID,"
+                        + "S.OrderNO,"
+                        + "S.InvID,"
+                        + "S.Num,"
+                        + "S.Price,"
+                        + "inv.OrderNO as SinOrderNO,"
+                        + "g.GID,"
+                        + "g.GName,"
+                        + "g.Specs "
+                        + "FROM STOCKOUT s,INVENTORY inv, GOODS g "
+                        + "WHERE s.InvID=inv.InvID "
+                        + "AND inv.GID=g.GID "
+                        + "AND s.OrderNO=@OrderNO "
+                        + "ORDER BY s.SID";
+            Dictionary<string, object> values = new Dictionary<string, object>();
+            values.Add("OrderNO", orderNO);
+            return Connector.LoadModels<StockOutOrderDetailVO>(sql, values);
         }
 
         private string GenOrderNO(string dtStr)
