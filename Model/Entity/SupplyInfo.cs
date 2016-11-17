@@ -5,12 +5,12 @@ namespace Model.Entity
     {
         public readonly string __table = "SUPPLY_INFO";
 
-        private int spID__PK;
-        private int custID;
-        private int gID;
+        private int? spID__PK;
+        private int? custID;
+        private int? gID;
         private string st;
 
-        public int SpID__PK
+        public int? SpID__PK
         {
             get
             {
@@ -23,7 +23,7 @@ namespace Model.Entity
             }
         }
 
-        public int CustID
+        public int? CustID
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Model.Entity
             }
         }
 
-        public int GID
+        public int? GID
         {
             get
             {

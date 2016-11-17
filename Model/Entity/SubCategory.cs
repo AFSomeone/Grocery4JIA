@@ -11,14 +11,14 @@ namespace Model.Entity
         public readonly string __table = "SUB_CATEGORY";
         public readonly short __baseId = 2000;
 
-        private short cId__PK;
-        private short superId;
+        private short? cId__PK;
+        private short? superId;
         private string cName;
         private string abbr;
         private string pinYin;
         private string st;
 
-        public short SuperId
+        public short? SuperId
         {
             get
             {
@@ -83,7 +83,7 @@ namespace Model.Entity
             }
         }
 
-        public short CId__PK
+        public short? CId__PK
         {
             get
             {

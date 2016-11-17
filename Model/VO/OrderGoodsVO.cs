@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Model.VO
 {
     public class OrderGoodsVO
@@ -8,6 +10,10 @@ namespace Model.VO
         private int num;
         private decimal price;
         private string specs;
+
+        private string orderNO;
+        private string direct;
+        private DateTime tmst;
 
         public int GID
         {
@@ -71,6 +77,45 @@ namespace Model.VO
             set
             {
                 specs = value;
+            }
+        }
+
+        public string OrderNO
+        {
+            get
+            {
+                return orderNO;
+            }
+
+            set
+            {
+                orderNO = value;
+            }
+        }
+
+        public string Direct
+        {
+            get
+            {
+                return direct;
+            }
+
+            set
+            {
+                direct = value;
+            }
+        }
+
+        public DateTime Tmst
+        {
+            get
+            {
+                return tmst;
+            }
+
+            set
+            {
+                tmst = value;
             }
         }
     }

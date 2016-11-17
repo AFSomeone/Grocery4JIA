@@ -114,15 +114,15 @@ namespace DAL
                 {
                     if (fieldsStrbr.Length == 0)
                     {
-                        fieldsStrbr.Append(info.Name);
-                        valuesStrbr.AppendFormat("@{0}", info.Name);
+                        fieldsStrbr.Append(pName);
+                        valuesStrbr.AppendFormat("@{0}", pName);
                     }
                     else
                     {
-                        fieldsStrbr.AppendFormat(",{0}", info.Name);
-                        valuesStrbr.AppendFormat(",@{0}", info.Name);
+                        fieldsStrbr.AppendFormat(",{0}", pName);
+                        valuesStrbr.AppendFormat(",@{0}", pName);
                     }
-                    values.Add(info.Name, info.GetValue(t, null));
+                    values.Add(pName, info.GetValue(t, null));
                 }
             }
             if (fieldsStrbr.Length == 0)
@@ -133,7 +133,7 @@ namespace DAL
         }
 
         /// <summary>
-        /// 获取insert操作的sql&parameters（自带计算主键ID（max+1））
+        /// 获取insert操作的sql&parameters（自动计算主键ID（max+1））
         /// </summary>
         /// <typeparam name="T">model 类型</typeparam>
         /// <param name="t">model 实例</param>
@@ -184,7 +184,7 @@ namespace DAL
                 }
                     
 
-                if (null != info.GetValue(t, null))
+                if (null != info.GetValue(t, null) || isPk)
                 {
                     if (fieldsStrbr.Length == 0)
                     {
@@ -208,7 +208,8 @@ namespace DAL
                         else
                             valuesStrbr.AppendFormat(",@{0}", pName);
                     }
-                    values.Add(pName, info.GetValue(t, null));
+                    if(!isPk)
+                        values.Add(pName, info.GetValue(t, null));
                 }
             }
             if (fieldsStrbr.Length == 0)

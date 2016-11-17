@@ -5,23 +5,32 @@ namespace DAL
     public class BaseService
     {
         private DbConnector _connector;
-
-        public BaseService()
-        {
-            if (null == Connector)
-                Connector = ConnectorFactory.CreatConnector();
-        }
+        private int connectorId;
 
         internal DbConnector Connector
         {
             get
             {
+                _connector = ConnectorFactory.GetConnector(connectorId);
                 return _connector;
             }
 
             set
             {
                 _connector = value;
+            }
+        }
+
+        public int ConnectorId
+        {
+            get
+            {
+                return connectorId;
+            }
+
+            set
+            {
+                connectorId = value;
             }
         }
     }

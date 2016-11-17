@@ -25,7 +25,7 @@ namespace Model.Const
         /// <summary>
         /// 用户状态
         /// </summary>
-        public static readonly Dictionary<string, string> USR_MAP = new Dictionary<string, string> { { ST.VALID, "可用" }, { ST.INVALID, "锁定" } };
+        public static readonly Dictionary<string, string> USR_MAP = new Dictionary<string, string> { { ST.VALID, "可用" }, { ST.INVALID, "禁用" } };
 
         /// <summary>
         /// 商品状态

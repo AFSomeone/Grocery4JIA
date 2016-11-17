@@ -6,15 +6,15 @@ namespace Model.Entity
     {
         public readonly string __table = "REFUNDS";
 
-        private long rID__PK;
+        private long? rID__PK;
         private string orderNO;
-        private long invID;
-        private int num;
-        private decimal price;
+        private long? invID;
+        private int? num;
+        private decimal? price;
         private string direct;
-        private string st;
+        private long? tgtSID;
 
-        public long RID__PK
+        public long? RID__PK
         {
             get
             {
@@ -27,7 +27,7 @@ namespace Model.Entity
             }
         }
 
-        public int Num
+        public int? Num
         {
             get
             {
@@ -40,20 +40,7 @@ namespace Model.Entity
             }
         }
 
-        public string St
-        {
-            get
-            {
-                return st;
-            }
-
-            set
-            {
-                st = value;
-            }
-        }
-
-        public long InvID
+        public long? InvID
         {
             get
             {
@@ -79,7 +66,7 @@ namespace Model.Entity
             }
         }
 
-        public decimal Price
+        public decimal? Price
         {
             get
             {
@@ -102,6 +89,19 @@ namespace Model.Entity
             set
             {
                 direct = value;
+            }
+        }
+
+        public long? TgtSID
+        {
+            get
+            {
+                return tgtSID;
+            }
+
+            set
+            {
+                tgtSID = value;
             }
         }
     }

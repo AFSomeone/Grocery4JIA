@@ -5,13 +5,14 @@ namespace Model.Entity
     {
         public readonly string __table = "STOCKOUT";
 
-        private long sID__PK;
+        private long? sID__PK;
         private string orderNO;
-        private long invID;
-        private int num;
-        private decimal price;
+        private long? invID;
+        private int? num;
+        private int? rfNum;
+        private decimal? price;
 
-        public long SID__PK
+        public long? SID__PK
         {
             get
             {
@@ -37,7 +38,7 @@ namespace Model.Entity
             }
         }
 
-        public long InvID
+        public long? InvID
         {
             get
             {
@@ -50,7 +51,7 @@ namespace Model.Entity
             }
         }
 
-        public int Num
+        public int? Num
         {
             get
             {
@@ -63,7 +64,7 @@ namespace Model.Entity
             }
         }
 
-        public decimal Price
+        public decimal? Price
         {
             get
             {
@@ -73,6 +74,19 @@ namespace Model.Entity
             set
             {
                 price = value;
+            }
+        }
+
+        public int? RfNum
+        {
+            get
+            {
+                return rfNum;
+            }
+
+            set
+            {
+                rfNum = value;
             }
         }
     }

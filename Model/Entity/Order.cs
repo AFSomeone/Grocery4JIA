@@ -6,17 +6,18 @@ namespace Model.Entity
     {
         public readonly string __table = "ORDERS";
 
-        private string orderNO;
-        private int custID;
+        private string orderNO__PK;
+        private int? custID;
         private string custName;
-        private decimal amount;
+        private decimal? amount;
         private string direct;
         private DateTime? crtTmst;
         private DateTime? uptTmst;
         private string crtUID;
         private string uptUID;
+        private string handled;
 
-        public decimal Amount
+        public decimal? Amount
         {
             get
             {
@@ -94,7 +95,7 @@ namespace Model.Entity
             }
         }
 
-        public int CustID
+        public int? CustID
         {
             get
             {
@@ -120,16 +121,29 @@ namespace Model.Entity
             }
         }
 
-        public string OrderNO
+        public string OrderNO__PK
         {
             get
             {
-                return orderNO;
+                return orderNO__PK;
             }
 
             set
             {
-                orderNO = value;
+                orderNO__PK = value;
+            }
+        }
+
+        public string Handled
+        {
+            get
+            {
+                return handled;
+            }
+
+            set
+            {
+                handled = value;
             }
         }
     }

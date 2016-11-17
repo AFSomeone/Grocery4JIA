@@ -7,7 +7,7 @@ namespace DAL.Com
 {
     public class SubCatgService : BaseService
     {
-        public List<SubCatgVO> LoadData(bool withInvalid)
+        public List<SubCatgVO> LoadData(bool withInvalid, PageVO page)
         {
             string sql = "SELECT sub.CID,"
                        + "sub.CNAME,"
@@ -26,7 +26,11 @@ namespace DAL.Com
                 values.Add("ST", ST.VALID);
             }
             sql += "ORDER BY sub.CID";
-            return Connector.LoadModels<SubCatgVO>(sql, values);
+
+            if(null == page)
+                return Connector.LoadModels<SubCatgVO>(sql, values);
+            else
+                return Connector.LoadModelsByPage<SubCatgVO>(sql, values, page);
         }
 
         public int Update(SubCategory catg)

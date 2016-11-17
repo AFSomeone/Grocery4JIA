@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Model</RootNamespace>
     <AssemblyName>Model</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -38,15 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Const\ACNT_TYPE.cs" />
+    <Compile Include="Const\BILLNO_PREF.cs" />
     <Compile Include="Const\DIRECT.cs" />
     <Compile Include="Const\GRADE.cs" />
+    <Compile Include="Const\HANDLE_FLAG.cs" />
     <Compile Include="Const\ORDERNO_PREF.cs" />
+    <Compile Include="Const\PAY_MODE.cs" />
+    <Compile Include="Const\PLATFORM_NM.cs" />
+    <Compile Include="Const\PYMNT_DIRECT.cs" />
     <Compile Include="Const\TERM.cs" />
+    <Compile Include="Entity\Billing.cs" />
+    <Compile Include="Entity\BillingChld.cs" />
+    <Compile Include="Entity\BillingInfo.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Const\ST.cs" />
+    <Compile Include="Entity\CustAcnt.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\Goods.cs" />
     <Compile Include="Entity\Inventory.cs" />
+    <Compile Include="Entity\InventoryChld.cs" />
     <Compile Include="Entity\Refund.cs" />
     <Compile Include="Entity\StockIn.cs" />
     <Compile Include="Entity\Order.cs" />
@@ -54,10 +67,18 @@
     <Compile Include="Entity\SubCategory.cs" />
     <Compile Include="Entity\SupplyInfo.cs" />
     <Compile Include="Entity\Usr.cs" />
+    <Compile Include="Entity\UsrAuth.cs" />
+    <Compile Include="Exception\JException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\StringUtil.cs" />
+    <Compile Include="VO\AnlsRsltVO.cs" />
+    <Compile Include="VO\BillGoodsVO.cs" />
+    <Compile Include="VO\BilliingVO.cs" />
+    <Compile Include="VO\BillingChldVO.cs" />
     <Compile Include="VO\GoodsVO.cs" />
-    <Compile Include="VO\InStockGoodsVO.cs" />
+    <Compile Include="VO\InvOprtChldVO.cs" />
+    <Compile Include="VO\PageVO.cs" />
+    <Compile Include="VO\StockGoodsVO.cs" />
     <Compile Include="VO\OrderGoodsVO.cs" />
     <Compile Include="VO\OrderVO.cs" />
     <Compile Include="VO\RefundOrderDetailVO.cs" />
@@ -67,6 +88,7 @@
     <Compile Include="VO\StockOutOrderDetailVO.cs" />
     <Compile Include="VO\StockOutOrderVO.cs" />
     <Compile Include="VO\SubCatgVO.cs" />
+    <Compile Include="VO\TotalBillingVO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,6 +6,7 @@ namespace Model.VO
     {
         private string crtUName;
         private string uptUName;
+        private string billNO;
 
         public string CrtUName
         {
@@ -30,6 +31,19 @@ namespace Model.VO
             set
             {
                 uptUName = value;
+            }
+        }
+
+        public string BillNO
+        {
+            get
+            {
+                return billNO;
+            }
+
+            set
+            {
+                billNO = value;
             }
         }
     }

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BLL</RootNamespace>
     <AssemblyName>BLL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\U-LIB\Castle.Windsor.3.2.0\net35\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -38,16 +43,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Com\CatgManager.cs" />
-    <Compile Include="Com\CustomerManager.cs" />
-    <Compile Include="Com\GoodsManager.cs" />
-    <Compile Include="Com\InventoryManager.cs" />
-    <Compile Include="Com\RefundManager.cs" />
-    <Compile Include="Com\StockInManager.cs" />
-    <Compile Include="Com\StockOutManager.cs" />
-    <Compile Include="Com\SubCatgManager.cs" />
-    <Compile Include="Admin\UsrManager.cs" />
+    <Compile Include="Intfc\Admin\IUsrAuthManager.cs" />
+    <Compile Include="Intfc\Admin\IUsrManager.cs" />
+    <Compile Include="Intfc\Com\IDataAnlsManager.cs" />
+    <Compile Include="Intfc\Com\IRefund2SupplierManager.cs" />
+    <Compile Include="Intfc\Com\IResellerBillingManager.cs" />
+    <Compile Include="Intfc\Com\IResellerRefundManager.cs" />
+    <Compile Include="Intfc\Com\IStockInManager.cs" />
+    <Compile Include="Intfc\Com\IStockOutManager.cs" />
+    <Compile Include="Intfc\Com\ISubCatgManager.cs" />
+    <Compile Include="Intfc\Com\ISupplierBillingManager.cs" />
+    <Compile Include="Intfc\IBaseManager.cs" />
+    <Compile Include="Proxy\Admin\UsrAuthManager.cs" />
+    <Compile Include="Intfc\Com\ICustomerManager.cs" />
+    <Compile Include="Intfc\Com\IGoodsManager.cs" />
+    <Compile Include="Intfc\Com\IInventoryManager.cs" />
+    <Compile Include="Proxy\BaseManager.cs" />
+    <Compile Include="Proxy\Com\CatgManager.cs" />
+    <Compile Include="Proxy\Com\CustomerManager.cs" />
+    <Compile Include="Proxy\Com\DataAnlsManager.cs" />
+    <Compile Include="Proxy\Com\GoodsManager.cs" />
+    <Compile Include="Intfc\Com\ICatgManager.cs" />
+    <Compile Include="Proxy\Com\InventoryManager.cs" />
+    <Compile Include="Proxy\Com\Refund2SupplierManager.cs" />
+    <Compile Include="Proxy\Com\ResellerBillingManager.cs" />
+    <Compile Include="Proxy\Com\ResellerRefundManager.cs" />
+    <Compile Include="Proxy\Com\StockInManager.cs" />
+    <Compile Include="Proxy\Com\StockOutManager.cs" />
+    <Compile Include="Proxy\Com\SubCatgManager.cs" />
+    <Compile Include="Proxy\Admin\UsrManager.cs" />
+    <Compile Include="Proxy\Com\SupplierBillingManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proxy\InterfaceProxyGenerator.cs" />
+    <Compile Include="Proxy\TransAttr.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
@@ -59,6 +87,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,16 +6,15 @@ namespace Model.Entity
     {
         public readonly string __table = "STOCKIN";
 
-        private long sID__PK;
+        private long? sID__PK;
         private string orderNO;
-        private int gID;
-        private int num;
-        private decimal price;
-        private DateTime mfDt;
-        private DateTime expDt;
-        private string st;
+        private int? gID;
+        private int? num;
+        private decimal? price;
+        private DateTime? mfDt;
+        private DateTime? expDt;
 
-        public long SID__PK
+        public long? SID__PK
         {
             get
             {
@@ -28,7 +27,7 @@ namespace Model.Entity
             }
         }
 
-        public int GID
+        public int? GID
         {
             get
             {
@@ -41,7 +40,7 @@ namespace Model.Entity
             }
         }
   
-        public int Num
+        public int? Num
         {
             get
             {
@@ -54,7 +53,7 @@ namespace Model.Entity
             }
         }
 
-        public decimal Price
+        public decimal? Price
         {
             get
             {
@@ -67,7 +66,7 @@ namespace Model.Entity
             }
         }
 
-        public DateTime MfDt
+        public DateTime? MfDt
         {
             get
             {
@@ -80,7 +79,7 @@ namespace Model.Entity
             }
         }
 
-        public DateTime ExpDt
+        public DateTime? ExpDt
         {
             get
             {
@@ -90,19 +89,6 @@ namespace Model.Entity
             set
             {
                 expDt = value;
-            }
-        }
-
-        public string St
-        {
-            get
-            {
-                return st;
-            }
-
-            set
-            {
-                st = value;
             }
         }
 

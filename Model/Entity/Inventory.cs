@@ -6,13 +6,13 @@ namespace Model.Entity
     {
         public readonly string __table = "INVENTORY";
 
-        private long invID__PK;
+        private long? invID__PK;
         private string orderNO;
-        private int gID;
-        private int num;
-        private DateTime tmst;
+        private int? gID;
+        private int? num;
+        private DateTime? tmst;
 
-        public long InvID__PK
+        public long? InvID__PK
         {
             get
             {
@@ -25,7 +25,7 @@ namespace Model.Entity
             }
         }
 
-        public int GID
+        public int? GID
         {
             get
             {
@@ -38,7 +38,7 @@ namespace Model.Entity
             }
         }
 
-        public int Num
+        public int? Num
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Model.Entity
             }
         }
 
-        public DateTime Tmst
+        public DateTime? Tmst
         {
             get
             {

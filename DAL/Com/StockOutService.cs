@@ -1,7 +1,6 @@
 ﻿
 using Model.Const;
 using Model.Entity;
-using Model.Util;
 using Model.VO;
 using System;
 using System.Collections.Generic;
@@ -16,48 +15,38 @@ namespace DAL.Com
             DateTime now = DateTime.Now;
             if (null == vo)
                 return orderNO;
-            try
+            decimal amount = 0;
+            string uptSql = "UPDATE INVENTORY SET Num=Num-@outNum,Tmst=@tmst WHERE InvID=@invID";
+            orderNO = GenOrderNO(string.Format("{0:yyyyMMdd}", now));
+            foreach (StockOut sout in vo._StockOutList)
             {
-                Connector.DbHelper.BeginTransaction();
-                decimal amount = 0;
-                string uptSql = "UPDATE INVENTORY SET Num=Num-@outNum,Tmst=@tmst WHERE InvID=@invID";
-                orderNO = GenOrderNO(string.Format("{0:yyyyMMdd}", now));
-                foreach (StockOut sout in vo._StockOutList)
-                {
-                    sout.OrderNO = orderNO;
-                    amount += sout.Price * sout.Num;
-                    Connector.Save<StockOut>(sout, true);
-                    //记录流水
-                    AddChld(sout.InvID, vo.CrtUID, sout.Num);
-                    Dictionary<string, object> values = new Dictionary<string, object>();
-                    values.Add("outNum", sout.Num);
-                    values.Add("tmst", now);
-                    values.Add("invID", sout.InvID);
-                    Connector.DbHelper.ExecuteSql(uptSql, values);
-                }
+                sout.OrderNO = orderNO;
+                amount += (decimal)sout.Price * (int)sout.Num;
+                Connector.Save<StockOut>(sout, true);
+                //记录流水
+                AddChld((long)sout.InvID, vo.CrtUID, (int)sout.Num);
+                Dictionary<string, object> values = new Dictionary<string, object>();
+                values.Add("outNum", sout.Num);
+                values.Add("tmst", now);
+                values.Add("invID", sout.InvID);
+                Connector.DbHelper.ExecuteSql(uptSql, values);
+            }
 
-                Order order = new Order();
-                order.CustID = vo.CustID;
-                order.CustName = vo.CustName;
-                order.Direct = vo.Direct;
-                order.UptUID = vo.UptUID;
-                order.CrtUID = vo.CrtUID;
-                order.CrtTmst = now;
-                order.UptTmst = now;
-                order.OrderNO = orderNO;
-                order.Amount = amount;
-                Connector.Save<Order>(order);
-                Connector.DbHelper.CommitTransaction();
-            }
-            catch
-            {
-                Connector.DbHelper.RollbackTransaction();
-                orderNO = string.Empty;
-            }
+            Order order = new Order();
+            order.CustID = vo.CustID;
+            order.CustName = vo.CustName;
+            order.Direct = vo.Direct;
+            order.UptUID = vo.UptUID;
+            order.CrtUID = vo.CrtUID;
+            order.CrtTmst = now;
+            order.UptTmst = now;
+            order.OrderNO__PK = orderNO;
+            order.Amount = amount;
+            Connector.Save<Order>(order);
             return orderNO;
         }
 
-        public List<StockOutOrderDetailVO> LoadOrderDetail(string orderNO)
+        public List<StockOutOrderDetailVO> LoadOrderDetail(string orderNO, PageVO page)
         {
             string sql = "SELECT s.SID,"
                         + "S.OrderNO,"
@@ -75,7 +64,11 @@ namespace DAL.Com
                         + "ORDER BY s.SID";
             Dictionary<string, object> values = new Dictionary<string, object>();
             values.Add("OrderNO", orderNO);
-            return Connector.LoadModels<StockOutOrderDetailVO>(sql, values);
+
+            if(null == page)
+                return Connector.LoadModels<StockOutOrderDetailVO>(sql, values);
+            else
+                return Connector.LoadModelsByPage<StockOutOrderDetailVO>(sql, values, page);
         }
 
         private string GenOrderNO(string dtStr)
@@ -86,7 +79,7 @@ namespace DAL.Com
             values.Add("today", ORDERNO_PREF.STOCK_OUT + dtStr + "%");
             orderNO = Connector.ScalarStr(sql, values);
             if (null == orderNO)
-                orderNO = ORDERNO_PREF.STOCK_OUT + dtStr + "00001";
+                orderNO = ORDERNO_PREF.STOCK_OUT + dtStr + "001";
             else
             {
                 long no = long.Parse(orderNO.Replace(ORDERNO_PREF.STOCK_OUT, ""));

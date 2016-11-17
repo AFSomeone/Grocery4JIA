@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UI</RootNamespace>
     <AssemblyName>Grocery4JIA</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>E:\MS.NET\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,10 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,11 +48,39 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Grocery.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Grocery4JIA.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3F9A6C9CD93D9002A4A449296C8AD79E9F17F598</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>UI_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dgv_pager">
+      <HintPath>..\..\U-LIB\my.pager\dgv_pager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -59,37 +88,223 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="wf_auto_text">
+      <HintPath>..\..\U-LIB\my.autoText\wf_auto_text.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddGoods2CustForm.cs">
+    <Compile Include="About\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddGoods2CustForm.Designer.cs">
+    <Compile Include="About\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\AddGoods2CustForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\AddGoods2CustForm.Designer.cs">
       <DependentUpon>AddGoods2CustForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CatgForm.cs">
+    <Compile Include="Billing\BillCnfrmDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CatgForm.Designer.cs">
+    <Compile Include="Billing\BillCnfrmDialog.Designer.cs">
+      <DependentUpon>BillCnfrmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Goods\CatgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Goods\CatgForm.Designer.cs">
       <DependentUpon>CatgForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomerForm.cs">
+    <Compile Include="Customers\CustAcntForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomerForm.Designer.cs">
+    <Compile Include="Customers\CustAcntForm.Designer.cs">
+      <DependentUpon>CustAcntForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\CustomerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GoodsForm.cs">
+    <Compile Include="Goods\GoodsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GoodsForm.Designer.cs">
+    <Compile Include="Goods\GoodsForm.Designer.cs">
       <DependentUpon>GoodsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GoodsInStockForm.cs">
+    <Compile Include="Orders\GoodsInStockForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GoodsInStockForm.Designer.cs">
+    <Compile Include="Orders\GoodsInStockForm.Designer.cs">
       <DependentUpon>GoodsInStockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IBaseForm.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StockTaking\InvGoodsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockTaking\InvGoodsDialog.Designer.cs">
+      <DependentUpon>InvGoodsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockTaking\InvOprtChldDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockTaking\InvOprtChldDialog.Designer.cs">
+      <DependentUpon>InvOprtChldDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Log\JTraceListener.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\MCustAcntForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\MCustAcntForm.Designer.cs">
+      <DependentUpon>MCustAcntForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\MCustomersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\MCustomersForm.Designer.cs">
+      <DependentUpon>MCustomersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Goods\MGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Goods\MGoodsForm.Designer.cs">
+      <DependentUpon>MGoodsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockIn\MRefund2SupplierForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockIn\MRefund2SupplierForm.Designer.cs">
+      <DependentUpon>MRefund2SupplierForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\MResellerBillingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\MResellerBillingForm.Designer.cs">
+      <DependentUpon>MResellerBillingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockOut\MResellerRefundForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockOut\MResellerRefundForm.Designer.cs">
+      <DependentUpon>MResellerRefundForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockTaking\MStocktakingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockTaking\MStocktakingForm.Designer.cs">
+      <DependentUpon>MStocktakingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\MSupplierBillingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\MSupplierBillingForm.Designer.cs">
+      <DependentUpon>MSupplierBillingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockIn\MStockInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockIn\MStockInForm.Designer.cs">
+      <DependentUpon>MStockInForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockOut\MStockOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockOut\MStockOutForm.Designer.cs">
+      <DependentUpon>MStockOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\MUsrsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sys\MUsrsForm.Designer.cs">
+      <DependentUpon>MUsrsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderCnfrmDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\OrderCnfrmDialog.Designer.cs">
+      <DependentUpon>OrderCnfrmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderPrinterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\OrderPrinterForm.Designer.cs">
+      <DependentUpon>OrderPrinterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Billing\PayMntForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Billing\PayMntForm.Designer.cs">
+      <DependentUpon>PayMntForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Orders\RefundOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\RefundOrderDetailForm.Designer.cs">
+      <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anls\ProfitAnlsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anls\ProfitAnlsForm.Designer.cs">
+      <DependentUpon>ProfitAnlsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anls\SalesmanProfitAnlsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anls\SalesmanProfitAnlsForm.Designer.cs">
+      <DependentUpon>SalesmanProfitAnlsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockOut\SoldGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockOut\SoldGoodsForm.Designer.cs">
+      <DependentUpon>SoldGoodsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\StockInOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\StockInOrderDetailForm.Designer.cs">
+      <DependentUpon>StockInOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\StockOutOrderDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Orders\StockOutOrderDetailForm.Designer.cs">
+      <DependentUpon>StockOutOrderDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Goods\SubCatgForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Goods\SubCatgForm.Designer.cs">
+      <DependentUpon>SubCatgForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\MSupplyInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\MSupplyInfoForm.Designer.cs">
+      <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockIn\SupplyGoodsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockIn\SupplyGoodsForm.Designer.cs">
+      <DependentUpon>SupplyGoodsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -97,163 +312,141 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Sys\UsrAuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Sys\UsrAuthForm.Designer.cs">
+      <DependentUpon>UsrAuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MCustomersForm.cs">
+    <Compile Include="Sys\UsrForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MCustomersForm.Designer.cs">
-      <DependentUpon>MCustomersForm.cs</DependentUpon>
+    <Compile Include="Sys\UsrForm.Designer.cs">
+      <DependentUpon>UsrForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MGoodsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MGoodsForm.Designer.cs">
-      <DependentUpon>MGoodsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MRefund2SupplierForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MRefund2SupplierForm.Designer.cs">
-      <DependentUpon>MRefund2SupplierForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MStockinForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MStockinForm.Designer.cs">
-      <DependentUpon>MStockinForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MStockOutForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MStockOutForm.Designer.cs">
-      <DependentUpon>MStockOutForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrderCnfrmDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderCnfrmDialog.Designer.cs">
-      <DependentUpon>OrderCnfrmDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RefundOrderDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RefundOrderDetailForm.Designer.cs">
-      <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StockinOrderDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockinOrderDetailForm.Designer.cs">
-      <DependentUpon>StockinOrderDetailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StockOutOrderDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StockOutOrderDetailForm.Designer.cs">
-      <DependentUpon>StockOutOrderDetailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SubCatgForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubCatgForm.Designer.cs">
-      <DependentUpon>SubCatgForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MSupplyInfoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MSupplyInfoForm.Designer.cs">
-      <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SupplyGoodsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SupplyGoodsForm.Designer.cs">
-      <DependentUpon>SupplyGoodsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="AddGoods2CustForm.resx">
+    <EmbeddedResource Include="About\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\AddGoods2CustForm.resx">
       <DependentUpon>AddGoods2CustForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CatgForm.resx">
+    <EmbeddedResource Include="Billing\BillCnfrmDialog.resx">
+      <DependentUpon>BillCnfrmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Goods\CatgForm.resx">
       <DependentUpon>CatgForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomerForm.resx">
+    <EmbeddedResource Include="Customers\CustAcntForm.resx">
+      <DependentUpon>CustAcntForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GoodsForm.resx">
+    <EmbeddedResource Include="Goods\GoodsForm.resx">
       <DependentUpon>GoodsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GoodsInStockForm.resx">
+    <EmbeddedResource Include="Orders\GoodsInStockForm.resx">
       <DependentUpon>GoodsInStockForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="StockTaking\InvGoodsDialog.resx">
+      <DependentUpon>InvGoodsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockTaking\InvOprtChldDialog.resx">
+      <DependentUpon>InvOprtChldDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MCustomersForm.resx">
+    <EmbeddedResource Include="Customers\MCustAcntForm.resx">
+      <DependentUpon>MCustAcntForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\MCustomersForm.resx">
       <DependentUpon>MCustomersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MGoodsForm.resx">
+    <EmbeddedResource Include="Goods\MGoodsForm.resx">
       <DependentUpon>MGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MRefund2SupplierForm.resx">
+    <EmbeddedResource Include="StockIn\MRefund2SupplierForm.resx">
       <DependentUpon>MRefund2SupplierForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MStockinForm.resx">
-      <DependentUpon>MStockinForm.cs</DependentUpon>
+    <EmbeddedResource Include="Billing\MResellerBillingForm.resx">
+      <DependentUpon>MResellerBillingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MStockOutForm.resx">
+    <EmbeddedResource Include="StockOut\MResellerRefundForm.resx">
+      <DependentUpon>MResellerRefundForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockTaking\MStocktakingForm.resx">
+      <DependentUpon>MStocktakingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\MSupplierBillingForm.resx">
+      <DependentUpon>MSupplierBillingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockIn\MStockInForm.resx">
+      <DependentUpon>MStockInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockOut\MStockOutForm.resx">
       <DependentUpon>MStockOutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderCnfrmDialog.resx">
+    <EmbeddedResource Include="Sys\MUsrsForm.resx">
+      <DependentUpon>MUsrsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\OrderCnfrmDialog.resx">
       <DependentUpon>OrderCnfrmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\OrderPrinterForm.resx">
+      <DependentUpon>OrderPrinterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Billing\PayMntForm.resx">
+      <DependentUpon>PayMntForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="RefundOrderDetailForm.resx">
+    <EmbeddedResource Include="rdlc\StockoutOrder.rdlc" />
+    <EmbeddedResource Include="Orders\RefundOrderDetailForm.resx">
       <DependentUpon>RefundOrderDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StockinOrderDetailForm.resx">
-      <DependentUpon>StockinOrderDetailForm.cs</DependentUpon>
+    <EmbeddedResource Include="Anls\ProfitAnlsForm.resx">
+      <DependentUpon>ProfitAnlsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StockOutOrderDetailForm.resx">
+    <EmbeddedResource Include="Anls\SalesmanProfitAnlsForm.resx">
+      <DependentUpon>SalesmanProfitAnlsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockOut\SoldGoodsForm.resx">
+      <DependentUpon>SoldGoodsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\StockInOrderDetailForm.resx">
+      <DependentUpon>StockInOrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Orders\StockOutOrderDetailForm.resx">
       <DependentUpon>StockOutOrderDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubCatgForm.resx">
+    <EmbeddedResource Include="Goods\SubCatgForm.resx">
       <DependentUpon>SubCatgForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MSupplyInfoForm.resx">
+    <EmbeddedResource Include="Customers\MSupplyInfoForm.resx">
       <DependentUpon>MSupplyInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SupplyGoodsForm.resx">
+    <EmbeddedResource Include="StockIn\SupplyGoodsForm.resx">
       <DependentUpon>SupplyGoodsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <EmbeddedResource Include="Sys\UsrAuthForm.resx">
+      <DependentUpon>UsrAuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sys\UsrForm.resx">
+      <DependentUpon>UsrForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Model.VO.AnlsRsltVO.datasource" />
+    <None Include="Properties\DataSources\Model.VO.GoodsVO.datasource" />
+    <None Include="Properties\DataSources\Model.VO.StockOutOrderDetailVO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -263,6 +456,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UI_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -281,13 +475,31 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\jia.logo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\jia.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stocktaking.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock_in.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock_out.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Grocery.ico" />
+    <None Include="Resources\rcv_bill.ico" />
+    <None Include="Resources\pay_bill.ico" />
+    <None Include="Resources\recycle.ico" />
+    <None Include="Resources\stock-in.ico" />
+    <None Include="Resources\refund.ico" />
+    <None Include="Resources\Grocery.ico" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

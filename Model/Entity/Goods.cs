@@ -9,11 +9,11 @@ namespace Model.Entity
         public readonly string __table = "GOODS";
         public readonly int __baseId = 50000;
 
-        private int gID__PK;
+        private int? gID__PK;
         private string gName;
         private string abbr;
         private string specs;
-        private short subCatgID;
+        private short? subCatgID;
         private string shelfLife;
         private string st;
         private string remark;
@@ -57,7 +57,7 @@ namespace Model.Entity
             }
         }
 
-        public short SubCatgID
+        public short? SubCatgID
         {
             get
             {
@@ -109,7 +109,7 @@ namespace Model.Entity
             }
         }
 
-        public int GID__PK
+        public int? GID__PK
         {
             get
             {

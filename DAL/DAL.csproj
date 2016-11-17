@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
     <AssemblyName>DAL</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\U-LIB\Castle.Windsor.3.2.0\net35\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="mysql.data">
       <HintPath>..\..\U-LIB\mysql-connector-net-6.2.5\mysql.data.dll</HintPath>
     </Reference>
@@ -42,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AuthService.cs" />
     <Compile Include="BaseService.cs" />
+    <Compile Include="Com\BillingService.cs" />
     <Compile Include="Com\CatgService.cs" />
     <Compile Include="Com\CustomerService.cs" />
+    <Compile Include="Com\DataAnlsService.cs" />
     <Compile Include="Com\GoodsService.cs" />
     <Compile Include="Com\InventoryService.cs" />
     <Compile Include="Com\OrderService.cs" />

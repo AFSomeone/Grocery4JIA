@@ -6,7 +6,7 @@ namespace Model.Entity
         public readonly string __table = "CUSTOMERS";
         public readonly int __baseId = 3000;
 
-        private int cID__PK;
+        private int? cID__PK;
         private string cName;
         private string address;
         private string tel;
@@ -148,7 +148,7 @@ namespace Model.Entity
             }
         }
 
-        public int CID__PK
+        public int? CID__PK
         {
             get
             {

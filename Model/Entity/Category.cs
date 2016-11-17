@@ -11,11 +11,11 @@ namespace Model.Entity
         public readonly string __table = "CATEGORY";
         public readonly short __baseId = 10;
 
-        private short cId__PK;
+        private short? cId__PK;
         private string cName;
         private string st;
 
-        public short CId__PK
+        public short? CId__PK
         {
             get
             {

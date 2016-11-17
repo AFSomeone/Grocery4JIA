@@ -1,7 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Model.Const
 {
@@ -26,5 +24,19 @@ namespace Model.Const
         /// 分销商退货
         /// </summary>
         public const string RESELLER_REFUND = "-2";
+
+        /// <summary>
+        /// 盘点修正
+        /// </summary>
+        public const string STOCKTAKING = "0";
+
+        public static readonly Dictionary<string, string> DIRECT_MAP = new Dictionary<string, string>
+        {
+            {DIRECT.STOCK_IN, "进货"},
+            {DIRECT.STOCK_OUT, "出货"},
+            {DIRECT.REFUND2SUPPLIER, "退货"},
+            {DIRECT.RESELLER_REFUND, "回收"},
+            {DIRECT.STOCKTAKING, "盘点"}
+        };
     }
 }

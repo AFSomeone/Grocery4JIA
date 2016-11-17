@@ -1,6 +1,5 @@
 ﻿using Model.Const;
 using Model.Entity;
-using Model.Util;
 using Model.VO;
 using System;
 using System.Collections.Generic;
@@ -20,45 +19,35 @@ namespace DAL.Com
             DateTime now = DateTime.Now;
             if (null == vo)
                 return orderNO;
-            try
+            decimal amount = 0;
+            orderNO = GenOrderNO(string.Format("{0:yyyyMMdd}", now));
+            foreach (StockIn sin in vo._StockinList)
             {
-                Connector.DbHelper.BeginTransaction();
-                decimal amount = 0;
-                orderNO = GenOrderNO(string.Format("{0:yyyyMMdd}", now));
-                foreach (StockIn sin in vo._StockinList)
-                {
-                    sin.OrderNO = orderNO;
-                    amount += sin.Price * sin.Num;
-                    Connector.Save<StockIn>(sin, true);
+                sin.OrderNO = orderNO;
+                amount += (decimal)sin.Price * (int)sin.Num;
+                Connector.Save<StockIn>(sin, true);
 
-                    Inventory inv = new Inventory();
-                    inv.GID = sin.GID;
-                    inv.OrderNO = orderNO;
-                    inv.Num = sin.Num;
-                    inv.Tmst = now;
-                    Connector.Save<Inventory>(inv, true);
-                }
-                //入库流水
-                AddChld(orderNO, vo.CrtUID);
+                Inventory inv = new Inventory();
+                inv.GID = sin.GID;
+                inv.OrderNO = orderNO;
+                inv.Num = sin.Num;
+                inv.Tmst = now;
+                Connector.Save<Inventory>(inv, true);
+            }
+            //入库流水
+            AddChld(orderNO, vo.CrtUID);
 
-                Order order = new Order();
-                order.CustID = vo.CustID;
-                order.CustName = vo.CustName;
-                order.Direct = vo.Direct;
-                order.UptUID = vo.UptUID;
-                order.CrtUID = vo.CrtUID;
-                order.CrtTmst = now;
-                order.UptTmst = now;
-                order.OrderNO = orderNO;
-                order.Amount = amount;
-                Connector.Save<Order>(order);
-                Connector.DbHelper.CommitTransaction();
-            }
-            catch
-            {
-                Connector.DbHelper.RollbackTransaction();
-                orderNO = string.Empty;
-            }
+            Order order = new Order();
+            order.CustID = vo.CustID;
+            order.CustName = vo.CustName;
+            order.Direct = vo.Direct;
+            order.UptUID = vo.UptUID;
+            order.CrtUID = vo.CrtUID;
+            order.CrtTmst = now;
+            order.UptTmst = now;
+            order.OrderNO__PK = orderNO;
+            order.Amount = amount;
+            Connector.Save<Order>(order);
             return orderNO;
         }
 
@@ -67,7 +56,7 @@ namespace DAL.Com
         /// </summary>
         /// <param name="orderNO"></param>
         /// <returns></returns>
-        public List<StockInOrderDetailVO> LoadOrderDetail(string orderNO)
+        public List<StockInOrderDetailVO> LoadOrderDetail(string orderNO, PageVO page)
         {
             string sql = "SELECT s.SID,"
                         +"s.GID,"
@@ -84,7 +73,11 @@ namespace DAL.Com
                         +"ORDER BY s.SID";
             Dictionary<string, object> values = new Dictionary<string, object>();
             values.Add("OrderNO", orderNO);
-            return Connector.LoadModels<StockInOrderDetailVO>(sql,values);
+
+            if(null == page)
+                return Connector.LoadModels<StockInOrderDetailVO>(sql,values);
+            else
+                return Connector.LoadModelsByPage<StockInOrderDetailVO>(sql, values, page);
         }
 
         /// <summary>
@@ -100,7 +93,7 @@ namespace DAL.Com
             values.Add("today", ORDERNO_PREF.STOCK_IN + dtStr + "%");
             orderNO = Connector.ScalarStr(sql, values);
             if (null == orderNO)
-                orderNO = ORDERNO_PREF.STOCK_IN + dtStr + "00001";
+                orderNO = ORDERNO_PREF.STOCK_IN + dtStr + "001";
             else
             {
                 long no = long.Parse(orderNO.Replace(ORDERNO_PREF.STOCK_IN,""));
